@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача html - 1</title>
+</head>
+<body>
+<h1>Заявка на кредит</h1>
+<p>Привет, введи свое имя:</p>
+<form action="page2.html" method="post">
+    <div>
+        <label>Имя: <input type="text" placeholder="Ваше имя" name="clientName"/></label>
+        <label>Мужчина<input type="radio" value="0" name="пол"></label>
+        <label>Женщина<input type="radio" value="1" name="пол"></label>
+    </div>
+    <div>
+        <label>Замужем(женат)<input type="checkbox" value="1" name="брак"></label>
+    </div>
+    <label>Есть живтоное<input type="checkbox" value="1" name="домашние животные"></label>
+    <div>
+        <label>Комментарий: <textarea name="Комментарий" id="1" cols="50" rows="10"
+                                      placeholder="Выскажитесь"></textarea></label>
+    </div>
+    <br>
+    <br>
+    <div>
+        <label>
+            Город:<select size="3" name="город">
+            <option value="1">Москва</option>
+            <option value="2">Новосибирск</option>
+            <option value="3">Иркутск</option>
+        </select>
+        </label>
+    </div>
+    <br>
+    <div>
+        <label>
+            Соседи:<select size="3" multiple name="Соседи">
+            <option value="1">Сверлят</option>
+            <option value="2">Достали</option>
+            <option value="3">Просят соли</option>
+        </select>
+        </label>
+    </div>
+    <br>
+    <button type="submit">Отправить заявку</button>
+</form>
+<p><a href="page2.html">На страницу 2</a></p>
+</body>
+</html>
