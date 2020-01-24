@@ -4,8 +4,9 @@
     background-color: rgb(254, 238, 214);
     padding-left: 15px;
     padding-right: 15px;
-    margin-left: 154px;
-    margin-right: 154px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 720px;
 }
 
 .courseName {
