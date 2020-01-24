@@ -1,0 +1,16 @@
+.mainTable {
+    font-family: Arial, serif;
+    border-spacing: 1px;
+    width: 600px;
+    padding-top: 10px;
+
+}
+
+.tableHead {
+    background-color: #3498DB;
+    color: white;
+}
+
+tr:nth-child(2n){
+    background: #e8edff
+}
