@@ -8,22 +8,22 @@
 <h1>Заявка на кредит</h1>
 <p>Привет, введи свое имя:</p>
 <form action="page2.html" method="post">
-    <div>
+    <div class="gender">
         <label>Имя: <input type="text" placeholder="Ваше имя" name="clientName"/></label>
         <label>Мужчина<input type="radio" value="0" name="пол"></label>
         <label>Женщина<input type="radio" value="1" name="пол"></label>
     </div>
-    <div>
+    <div class="family">
         <label>Замужем(женат)<input type="checkbox" value="1" name="брак"></label>
     </div>
     <label>Есть живтоное<input type="checkbox" value="1" name="домашние животные"></label>
-    <div>
+    <div class="comments">
         <label>Комментарий: <textarea name="Комментарий" id="1" cols="50" rows="10"
                                       placeholder="Выскажитесь"></textarea></label>
     </div>
     <br>
     <br>
-    <div>
+    <div class="city">
         <label>
             Город:<select size="3" name="город">
             <option value="1">Москва</option>
@@ -33,7 +33,7 @@
         </label>
     </div>
     <br>
-    <div>
+    <div class="neighbors">
         <label>
             Соседи:<select size="3" multiple name="Соседи">
             <option value="1">Сверлят</option>
