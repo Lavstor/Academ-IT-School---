@@ -1,0 +1,48 @@
+.coursePage {
+    color: rgb(103, 101, 101);
+    font-family: Arial, serif;
+    background-color: rgb(254, 238, 214);
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 154px;
+    margin-right: 154px;
+}
+
+.courseName {
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0 0 10px;
+}
+
+.oldPrice {
+    text-decoration: line-through
+}
+
+.courseDetails {
+    margin-top: 5px;
+    line-height: 22px;
+    font-size: 15px;
+    text-indent: 1em;
+}
+
+.infoType {
+    font-size: 17px;
+    color: #378db2;
+    font-weight: bold
+}
+
+.courseDetails > p {
+    margin: 0 0 10px;
+}
+
+.infoBlock {
+    margin: 0 0 5px;
+}
+
+.infoBlock > p {
+    margin: 0 0 0;
+}
+
+.lastInfoBlock {
+    margin-top: 9px;
+}
