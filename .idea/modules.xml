@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AcademITSchoolWeb.iml" filepath="$PROJECT_DIR$/AcademITSchoolWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CSS Table/CSS Table.iml" filepath="$PROJECT_DIR$/CSS Table/CSS Table.iml" />
       <module fileurl="file://$PROJECT_DIR$/CSS Text/CSS Text.iml" filepath="$PROJECT_DIR$/CSS Text/CSS Text.iml" />
       <module fileurl="file://$PROJECT_DIR$/Html/Html.iml" filepath="$PROJECT_DIR$/Html/Html.iml" />
     </modules>
