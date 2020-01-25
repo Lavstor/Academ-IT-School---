@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AcademITSchoolWeb.iml" filepath="$PROJECT_DIR$/AcademITSchoolWeb.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CSS Table/CSS Table.iml" filepath="$PROJECT_DIR$/CSS Table/CSS Table.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CSS Text/CSS Text.iml" filepath="$PROJECT_DIR$/CSS Text/CSS Text.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CSSForm/CSSForm.iml" filepath="$PROJECT_DIR$/CSSForm/CSSForm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CSSTable/CSSTable.iml" filepath="$PROJECT_DIR$/CSSTable/CSSTable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CSSText/CSSText.iml" filepath="$PROJECT_DIR$/CSSText/CSSText.iml" />
       <module fileurl="file://$PROJECT_DIR$/Html/Html.iml" filepath="$PROJECT_DIR$/Html/Html.iml" />
     </modules>
   </component>
