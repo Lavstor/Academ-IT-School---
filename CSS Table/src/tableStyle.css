@@ -1,9 +1,9 @@
 .mainTable {
-    font-family: Arial, serif;
-    border-spacing: 1px;
-    width: 600px;
-    padding-top: 10px;
-
+    width: 45%;
+    font-family: "Corbel", sans-serif;
+    font-size: 20px;
+    text-align: left;
+    border-collapse: collapse;
 }
 
 .tableHead {
@@ -11,6 +11,12 @@
     color: white;
 }
 
-tr:nth-child(2n){
+.tableBody > tr:nth-child(odd) {
     background: #e8edff
 }
+
+td, th {
+    padding: 7px;
+    border: 1px solid #cccccc;
+}
+
