@@ -1,49 +1,46 @@
-.coursePage {
+.course-page {
     color: rgb(103, 101, 101);
-    font-family: Arial, serif;
+    font-family: "Arial", sans-serif;
     background-color: rgb(254, 238, 214);
     padding-left: 15px;
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
-    width: 720px;
+    max-width: 720px;
 }
 
-.courseName {
+.course-name {
     font-size: 28px;
     font-weight: normal;
-    margin: 0 0 10px;
+    margin-bottom: 10px;
 }
 
-.oldPrice {
+.old-price {
     text-decoration: line-through
 }
 
-.courseDetails {
+.course-details {
+    text-align: justify;
     margin-top: 5px;
     line-height: 22px;
     font-size: 15px;
     text-indent: 1em;
 }
 
-.infoType {
+.info-type {
     font-size: 17px;
     color: #378db2;
     font-weight: bold
 }
 
-.courseDetails > p {
-    margin: 0 0 10px;
+.details {
+    margin-bottom: 10px;
 }
 
-.infoBlock {
-    margin: 0 0 5px;
+.info-block {
+    margin-bottom: 5px;
 }
 
-.infoBlock > p {
-    margin: 0 0 0;
-}
-
-.lastInfoBlock {
+.last-info-block {
     margin-top: 9px;
 }
