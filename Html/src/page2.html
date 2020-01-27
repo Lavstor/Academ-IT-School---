@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<!--suppress ALL -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Задача html - 2</title>
 </head>
 <body>
-<p><a name="top"></a></p>
+<p><a id ="top"></a></p>
 <img src="https://otvet.imgsmail.ru/download/78816784_c7c79fd2f240165aefda9d4ef40b9b58_800.gif" alt="Котик">
 <hr>
 <h1>Заголовок 1 уровня</h1>
@@ -21,7 +20,8 @@
 <h4>Заголовок 4 уровня</h4>
 <p>Абзац 4</p>
 <hr>
-<table border="3">
+<!--suppress HtmlDeprecatedAttribute -->
+<table border="1">
     <thead>
     <tr>
         <th colspan="4">Таблица 1</th>
@@ -30,7 +30,7 @@
     <tbody>
     <tr>
         <td rowspan="2">Ячейка 1</td>
-        <td>Ячейка 2</td>
+        <td colspan="3">Ячейка 2</td>
     </tr>
     <tr>
         <td>Ячейка 2</td>
@@ -40,6 +40,7 @@
     </tbody>
 </table>
 <hr>
+<!--suppress HtmlDeprecatedAttribute -->
 <table border="1">
     <thead>
     <tr>
@@ -66,6 +67,6 @@
 <hr>
 <p><a href="https://github.com/Lavstor/Academ-IT-School---">git</a></p>
 <br>
-<p><a href="#top">Наверх</a></p>
+<p><a href=#top>Наверх</a></p>
 </body>
 </html>
