@@ -1,0 +1,60 @@
+.main-container {
+    font-family: Arial, sans-serif;
+    color: rgb(103, 101, 101);
+    font-weight: normal;
+    font-size: 14px;
+    max-width: 720px;
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-container {
+    background-color: #feeed6;
+    padding: 12px;
+    max-width: 100%;
+}
+
+.label-container {
+    margin-bottom: 15px;
+}
+
+.form-name {
+    padding-left: 15px;
+    font-size: 29px;
+}
+
+.field-name {
+    font-weight: bold;
+}
+
+.your-comment {
+    width: 96%;
+    padding: 6px 12px;
+    margin-top: 6px;
+    font-weight: normal;
+    height: 100px;
+    max-width: 96%;
+}
+
+.input {
+    width: 96%;
+    border: none;
+    margin-top: 6px;
+    padding: 6px 12px;
+    height: 20px;
+}
+
+.button-container {
+    clear: both;
+    text-align: right;
+}
+
+.confirm-button {
+    background-color: #3498DB;
+    color: white;
+    height: 32px;
+    width: 22%;
+    font-weight: bold;
+    border: none;
+}
