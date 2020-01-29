@@ -34,7 +34,7 @@
     margin-top: 6px;
     font-weight: normal;
     height: 100px;
-    max-width: 96%;
+    resize: none;
 }
 
 .input {
