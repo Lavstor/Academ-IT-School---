@@ -29,12 +29,12 @@
 }
 
 .your-comment {
+    font-family: Arial, sans-serif;
     width: 96%;
     padding: 6px 12px;
     margin-top: 6px;
     font-weight: normal;
     height: 100px;
-    resize: none;
 }
 
 .input {
