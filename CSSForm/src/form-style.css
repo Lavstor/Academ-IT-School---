@@ -11,6 +11,7 @@
 }
 
 .form-container {
+
     background-color: #feeed6;
     padding: 14px;
 }
@@ -20,7 +21,7 @@
 }
 
 .main-container h2 {
-    padding-left: 15px;
+    padding-left: 12px;
     margin-bottom: 4px;
     font-size: 29px;
 }
