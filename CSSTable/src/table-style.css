@@ -1,25 +1,26 @@
 .main-table {
-    margin-top: 1%;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 45%;
-    font-family: "Corbel", sans-serif;
-    font-size: 20px;
+    max-width: 750px;
+    width: 100%;
+    font-family: "Lucida Sans Unicode", sans-serif;
+    font-size: 18px;
     text-align: left;
     border-collapse: collapse;
 }
 
 .main-table thead {
-    background-color: #36a0e8;
-    color: white;
+    font-weight: bold;
+    background-color: #3498db;
+    color: #FFFFFF;
 }
 
 .main-table tbody > tr:nth-child(odd) {
-    background: #e8edff
+    background: #eeeeee
 }
 
 .main-table td, th {
-    padding: 7px;
+    padding: 13px 10px;
     border: 1px solid #cccccc;
 }
-

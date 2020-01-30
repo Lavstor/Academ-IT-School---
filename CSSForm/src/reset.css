@@ -71,10 +71,6 @@ textarea {
     resize: vertical;
 }
 
-/**
- * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
- */
-
 audio,
 canvas,
 video {
@@ -84,76 +80,38 @@ video {
     max-width: 100%;
 }
 
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-
 audio:not([controls]) {
     display: none;
     height: 0;
 }
 
-/**
- * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
- * Known issue: no IE 6 support.
- */
-
 [hidden] {
     display: none;
 }
 
-/**
- * 1. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
- *    `em` units.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
- */
-
 html {
-    font-size: 100%; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-    -ms-text-size-adjust: 100%; /* 2 */
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
-
-/**
- * Address `outline` inconsistency between Chrome and other browsers.
- */
 
 a:focus {
     outline: thin dotted;
 }
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
 
 a:active,
 a:hover {
     outline: 0;
 }
 
-/**
- * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
- * 2. Improve image quality when scaled in IE 7.
- */
-
 img {
-    border: 0; /* 1 */
-    -ms-interpolation-mode: bicubic; /* 2 */
+    border: 0;
+    -ms-interpolation-mode: bicubic;
 }
-
-/**
- * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
- */
 
 figure {
     margin: 0;
 }
-
-/**
- * Correct margin displayed oddly in IE 6/7.
- */
 
 form {
     margin: 0;
@@ -166,10 +124,10 @@ fieldset {
 }
 
 legend {
-    border: 0; /* 1 */
+    border: 0;
     padding: 0;
-    white-space: normal; /* 2 */
-    *margin-left: -7px; /* 3 */
+    white-space: normal;
+    *margin-left: -7px;
 }
 
 button,
@@ -193,7 +151,7 @@ select {
 }
 
 button,
-html input[type="button"], /* 1 */
+html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
     -webkit-appearance: button;
@@ -208,10 +166,10 @@ html input[disabled] {
 
 input[type="checkbox"],
 input[type="radio"] {
-    box-sizing: border-box; /* 1 */
-    padding: 0; /* 2 */
-    *height: 13px; /* 3 */
-    *width: 13px; /* 3 */
+    box-sizing: border-box;
+    padding: 0;
+    *height: 13px;
+    *width: 13px;
 }
 
 input[type="search"] {
