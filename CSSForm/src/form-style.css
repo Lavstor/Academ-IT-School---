@@ -39,7 +39,7 @@
     height: 100px;
 }
 
-.input {
+.label-container input {
     width: 96%;
     border: none;
     margin-top: 6px;
@@ -52,7 +52,7 @@
     text-align: right;
 }
 
-.confirm-button {
+.button-container button {
     background-color: #3498DB;
     color: white;
     height: 32px;
