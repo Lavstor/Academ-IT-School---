@@ -19,16 +19,18 @@
     margin-bottom: 15px;
 }
 
-.form-name {
+.main-container h2 {
     padding-left: 15px;
+    padding-bottom: 5px;
     font-size: 29px;
 }
 
-.field-name {
+.label-container label {
     font-weight: bold;
 }
 
 .your-comment {
+    border: none;
     font-family: Arial, sans-serif;
     width: 96%;
     padding: 6px 12px;
