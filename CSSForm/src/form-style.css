@@ -4,6 +4,7 @@
     font-weight: normal;
     font-size: 14px;
     max-width: 720px;
+    width: 100%;
     padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -12,7 +13,6 @@
 .form-container {
     background-color: #feeed6;
     padding: 12px;
-    max-width: 100%;
 }
 
 .label-container {
@@ -29,22 +29,17 @@
     font-weight: bold;
 }
 
-.your-comment {
-    border: none;
-    font-family: Arial, sans-serif;
+.label-container textarea, input {
     width: 96%;
+    border: none;
     padding: 6px 12px;
     margin-top: 6px;
-    font-weight: normal;
-    height: 100px;
+    height: 20px;
 }
 
-.label-container input {
-    width: 96%;
-    border: none;
-    margin-top: 6px;
-    padding: 6px 12px;
-    height: 20px;
+.label-container textarea {
+    font-family: Arial, sans-serif;
+    height: 100px;
 }
 
 .button-container {
@@ -53,11 +48,14 @@
 }
 
 .button-container button {
-    background-color: #3498DB;
+    padding: 1px 10px;
+    background-color: #378db2;
     color: white;
     height: 32px;
-    width: 22%;
     font-weight: bold;
     font-size: 14px;
     border: none;
+
+    max-width: 150px;
+    width: 100%;
 }
