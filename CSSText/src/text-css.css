@@ -2,14 +2,13 @@
     color: rgb(103, 101, 101);
     font-family: "Arial", sans-serif;
     background-color: rgb(254, 238, 214);
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 5px 15px;
     margin-left: auto;
     margin-right: auto;
     max-width: 720px;
 }
 
-.course-name {
+.course-page h1 {
     font-size: 28px;
     font-weight: normal;
     margin-bottom: 10px;
@@ -33,14 +32,14 @@
     font-weight: bold
 }
 
-.details {
+.course-details p {
     margin-bottom: 10px;
 }
 
 .info-block {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .last-info-block {
-    margin-top: 9px;
+    margin-top: 20px;
 }
