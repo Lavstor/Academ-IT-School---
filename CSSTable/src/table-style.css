@@ -20,7 +20,7 @@
     background: #eeeeee
 }
 
-.main-table td, th {
+.main-table td, .main-table th {
     padding: 13px 10px;
     border: 1px solid #cccccc;
 }
