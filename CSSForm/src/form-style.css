@@ -30,7 +30,7 @@
     font-weight: bold;
 }
 
-.label-container textarea, input {
+.label-container textarea, .label-container input {
     width: 96%;
     border: none;
     padding: 6px 12px;
