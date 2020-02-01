@@ -1,45 +1,45 @@
-.main-container {
+.page-container {
     font-family: Arial, sans-serif;
-    color: rgb(103, 101, 101);
+    color: #676565;
     font-weight: normal;
     font-size: 14px;
     max-width: 735px;
     width: 100%;
-    padding: 14px;
+    padding-top: 20px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .form-container {
     background-color: #feeed6;
-    padding: 14px;
+    padding: 15px 18px;
 }
 
-.label-container {
+.container {
     margin-bottom: 16px;
 }
 
-.main-container h2 {
+.page-container h2 {
     padding-left: 12px;
     margin-bottom: 4px;
     font-size: 29px;
 }
 
-.label-container label {
+.container label {
     font-weight: bold;
 }
 
-.label-container textarea, .label-container input {
+.container textarea, .container input {
     width: 100%;
     border: none;
-    padding: 6px 12px;
+    padding: 10px 11px;
     margin-top: 5px;
     height: 35px;
 }
 
-.label-container textarea {
+.container textarea {
     font-family: Arial, sans-serif;
-    height: 110px;
+    height: 115px;
 }
 
 .button-container {
@@ -57,4 +57,8 @@
     border: none;
     max-width: 150px;
     width: 100%;
+}
+
+.button-container button:hover {
+    background-color: #317ea2;
 }
