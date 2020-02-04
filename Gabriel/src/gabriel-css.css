@@ -1,0 +1,79 @@
+.gabriel-page{
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, serif;
+}
+
+.top-table{
+    border-collapse: collapse;
+    background-color: #fed61b;
+    width: 100%;
+    font-size: 32px;
+    height: 100%;
+}
+.top-table th{
+    border: 1px #222222;
+    border-right-style: inset;
+    height: 95px;
+}
+
+.top-table a{
+    color: #89730b;
+    border: none;
+    text-decoration: none;
+}
+
+.top-table a:hover{
+    color: #d81608;
+    text-decoration: underline;
+}
+
+.midder-table{
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 15px;
+
+}
+.midder-table td{
+    height: 45px;
+    vertical-align: center;
+    text-align: center;
+}
+
+.midder-table th{
+    height: 45px;
+    font-weight: bold;
+}
+
+.midder-table input{
+    max-width: 305px;
+    width: 100%;
+}
+
+.previous-applications-table{
+    width: 100%;
+    text-align: center;
+}
+
+.previous-applications-table th, .previous-applications-table td{
+    height: 50px;
+}
+
+.right-button-container{
+
+    text-align: right;
+}
+.previous-applications-container p{
+
+    text-align: right;
+}
+
+.previous-applications-container h1{
+    font-weight: bold;
+    font-size: 22px;
+}
+.buttons-block button{
+    width: 100%;
+    max-width: 265px;
+    height: 60px;
+}
