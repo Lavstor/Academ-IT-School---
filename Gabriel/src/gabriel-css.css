@@ -27,6 +27,10 @@
     color: #d81608;
     text-decoration: underline;
 }
+.midder-block{
+    max-height: 450px;
+    overflow: auto;
+}
 
 .midder-table{
     border-collapse: collapse;
@@ -59,10 +63,6 @@
     height: 50px;
 }
 
-.right-button-container{
-
-    text-align: right;
-}
 .previous-applications-container p{
 
     text-align: right;
@@ -76,4 +76,21 @@
     width: 100%;
     max-width: 265px;
     height: 60px;
+}
+
+.buttons-block{
+    display: block;
+}
+.left-button-container{
+    display: block;
+ }
+
+.right-button-container{
+    display: block;
+    text-align: right;
+}
+
+.previous-applications-table-container{
+    max-height: 240px;
+    overflow: auto;
 }
