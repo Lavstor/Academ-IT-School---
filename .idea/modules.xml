@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/CSSText/CSSText.iml" filepath="$PROJECT_DIR$/CSSText/CSSText.iml" />
       <module fileurl="file://$PROJECT_DIR$/Gabriel/Gabriel.iml" filepath="$PROJECT_DIR$/Gabriel/Gabriel.iml" />
       <module fileurl="file://$PROJECT_DIR$/Html/Html.iml" filepath="$PROJECT_DIR$/Html/Html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JScriptArray/JScriptArray.iml" filepath="$PROJECT_DIR$/JScriptArray/JScriptArray.iml" />
     </modules>
   </component>
 </project>
