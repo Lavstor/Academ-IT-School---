@@ -34,8 +34,7 @@ let countries = [
         createCity("Кошатник", 1)]),
 
     createCountry("Московская", 10000, [createCity("Пошкандыбал", 324534643753243254236243),
-        createCity("Сведловск", 200), createCity("Многолюдовск", 223123124),
-        ]),
+        createCity("Сведловск", 200), createCity("Многолюдовск", 223123124),]),
 
     createCountry("Смурфлэнд", 7524, [createCity("Смурфятник", 2000000000000000),
         createCity("Сумрфетник", 123124214), createCity("Смурффффяяяятинаа", 2000000000000000000000000000000)]),
@@ -43,7 +42,7 @@ let countries = [
     createCountry("Муркланд", 1234, [createCity("Мяу", 900),
         createCity("МфуМяу", 1000), createCity("Мяяяяу", 2000)])];
 
-function f(country) {
+function getMaxCityCountry(country) {
     let count = 0;
     let answer = [];
 
@@ -53,15 +52,15 @@ function f(country) {
         if (currentCityCount > count) {
             count = currentCityCount;
             answer = [country[i]];
-        } else if(currentCityCount > count){
+        } else if(currentCityCount === count){
             answer.push([country[i]]);
         }
     }
     return answer;
 }
 
-console.log(f(countries));
+console.log(getMaxCityCountry(countries));
 
 
-
-
+let c;
+countries.forEach(e.getCities.getPopulation)
