@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/Gabriel/Gabriel.iml" filepath="$PROJECT_DIR$/Gabriel/Gabriel.iml" />
       <module fileurl="file://$PROJECT_DIR$/Html/Html.iml" filepath="$PROJECT_DIR$/Html/Html.iml" />
       <module fileurl="file://$PROJECT_DIR$/JScriptArray/JScriptArray.iml" filepath="$PROJECT_DIR$/JScriptArray/JScriptArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ObjectWorkJS/ObjectWorkJS.iml" filepath="$PROJECT_DIR$/ObjectWorkJS/ObjectWorkJS.iml" />
     </modules>
   </component>
 </project>
