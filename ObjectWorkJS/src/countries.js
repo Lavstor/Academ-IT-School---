@@ -27,18 +27,13 @@ function createCity(name, population) {
 let countries = [
     createCountry("Имаджинария", [createCity("Маленький городишка", 2),
         createCity("Большой городишка", 200), createCity("Город", 100)]),
-
     createCountry("Санктуарий", [createCity("Ромазановск", 900000000)]),
-
     createCountry("Новосибирская", [createCity("Помазаников", 900),
         createCity("Кошатник", 1)]),
-
     createCountry("Московская", [createCity("Пошкандыбал", 324534643753243254236243),
         createCity("Сведловск", 200), createCity("Многолюдовск", 223123124),]),
-
     createCountry("Смурфлэнд", [createCity("Смурфятник", 2000000000000000),
         createCity("Сумрфетник", 123124214), createCity("Смурффффяяяятинаа", 2000000000000000000000000000000)]),
-
     createCountry("Муркланд", [createCity("Мяу", 900),
         createCity("МфуМяу", 1000), createCity("Мяяяяу", 2000)])];
 
@@ -56,12 +51,13 @@ function getMaxCityCountry(country) {
             answer.push([country[i]]);
         }
     }
+
     return answer;
 }
 
 console.log(getMaxCityCountry(countries));
 
-function getArray(countries) {
+function getCityPopulationArray(countries) {
     let answer = [];
 
     for (let i = 0; i < countries.length; i++) {
@@ -78,4 +74,4 @@ function getArray(countries) {
     return answer;
 }
 
-console.log(getArray(countries));
+console.log(getCityPopulationArray(countries));
