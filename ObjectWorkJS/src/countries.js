@@ -1,4 +1,4 @@
-function createCountry(name, population, cities) {
+function createCountry(name, cities) {
     return {
         name: name,
         cities: cities,
@@ -25,21 +25,21 @@ function createCity(name, population) {
 }
 
 let countries = [
-    createCountry("Имаджинария", 100, [createCity("Маленький городишка", 2),
+    createCountry("Имаджинария", [createCity("Маленький городишка", 2),
         createCity("Большой городишка", 200), createCity("Город", 100)]),
 
-    createCountry("Санктуарий", 1000, [createCity("Ромазановск", 900000000)]),
+    createCountry("Санктуарий", [createCity("Ромазановск", 900000000)]),
 
-    createCountry("Новосибирская", 10, [createCity("Помазаников", 900),
+    createCountry("Новосибирская", [createCity("Помазаников", 900),
         createCity("Кошатник", 1)]),
 
-    createCountry("Московская", 10000, [createCity("Пошкандыбал", 324534643753243254236243),
+    createCountry("Московская", [createCity("Пошкандыбал", 324534643753243254236243),
         createCity("Сведловск", 200), createCity("Многолюдовск", 223123124),]),
 
-    createCountry("Смурфлэнд", 7524, [createCity("Смурфятник", 2000000000000000),
+    createCountry("Смурфлэнд", [createCity("Смурфятник", 2000000000000000),
         createCity("Сумрфетник", 123124214), createCity("Смурффффяяяятинаа", 2000000000000000000000000000000)]),
 
-    createCountry("Муркланд", 1234, [createCity("Мяу", 900),
+    createCountry("Муркланд", [createCity("Мяу", 900),
         createCity("МфуМяу", 1000), createCity("Мяяяяу", 2000)])];
 
 function getMaxCityCountry(country) {
@@ -52,7 +52,7 @@ function getMaxCityCountry(country) {
         if (currentCityCount > count) {
             count = currentCityCount;
             answer = [country[i]];
-        } else if(currentCityCount === count){
+        } else if (currentCityCount === count) {
             answer.push([country[i]]);
         }
     }
@@ -61,6 +61,21 @@ function getMaxCityCountry(country) {
 
 console.log(getMaxCityCountry(countries));
 
+function getArray(countries) {
+    let answer = [];
 
-let c;
-countries.forEach(e.getCities.getPopulation)
+    for (let i = 0; i < countries.length; i++) {
+        let a = {};
+        let name = countries[i].getName();
+
+        let population = 0;
+        countries[i].getCities().forEach(e => population += e.getPopulation());
+        a[name] = population;
+
+        answer.push(a)
+    }
+
+    return answer;
+}
+
+console.log(getArray(countries));
