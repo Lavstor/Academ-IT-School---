@@ -1,35 +1,28 @@
-let array = [500, 800, 900, 100, 1000, 10000, 6, 1, 2, 500];
+function printArrayOfIntegersWork() {
+    var arrayOfIntegers = [500, 800, 900, 100, 1000, 10000, 6, 1, 2, 500, 1234, 414221, 5125];
 
-array.sort(function (e1, e2) {
-    return e2 - e1;
-});
+    arrayOfIntegers.sort(function (e1, e2) {
+        return e2 - e1;
+    });
 
-console.log(array);
+    console.log("Отсортированный массив: " + arrayOfIntegers.join(", "));
 
-let listSlice2 = array.slice(0, 5);
-let listSlice1 = array.slice(5);
+    var slicedArray1 = arrayOfIntegers.slice(0, 5);
+    var slicedArray2 = arrayOfIntegers.slice(-5);
 
-console.log(listSlice1);
-console.log(listSlice2);
+    console.log("Вырезка 5 элементов с начала массива: " + slicedArray1.join(", "));
+    console.log("Вырезка 5 элементов с конца массива: " + slicedArray2.join(", "));
 
-function f(e) {
-    return e % 2 === 0;
+    var sum = arrayOfIntegers.reduce(function (previousValue, sum) {
+        if (sum % 2 === 0) {
+            previousValue += sum;
+        }
+
+        return previousValue;
+    }, 0);
+
+
+    console.log(sum);
 }
 
-let filter = function (list, f) {
-    let sum = 0;
-
-    for (let i = 0; i < list.length; ++i) {
-        let el = list[i];
-
-        if (f(el)) {
-            sum += el;
-        }
-    }
-
-    return sum;
-};
-
-const result = filter(array, f);
-
-console.log(result);
+printArrayOfIntegersWork();
