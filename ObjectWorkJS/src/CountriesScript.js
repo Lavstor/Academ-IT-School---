@@ -1,13 +1,10 @@
-function activateCountryScript() {
+(function () {
     function createCountry(name, cities) {
         return {
             name: name,
             cities: cities,
-            getName: function () {
-                return this.name;
-            },
             getCities: function () {
-                return cities;
+                return this.cities;
             }
         };
     }
@@ -15,13 +12,7 @@ function activateCountryScript() {
     function createCity(name, population) {
         return {
             name: name,
-            population: population,
-            getName: function () {
-                return this.name;
-            },
-            getPopulation: function () {
-                return this.population;
-            }
+            population: population
         }
     }
 
@@ -48,9 +39,9 @@ function activateCountryScript() {
 
             if (currentCityCount > count) {
                 count = currentCityCount;
-                answer = [country.getName()];
+                answer = [country.name];
             } else if (currentCityCount === count) {
-                answer.push([country.getName()]);
+                answer.push([country.name]);
             }
         });
 
@@ -63,8 +54,8 @@ function activateCountryScript() {
         countries.forEach(function (country) {
             var keyValue = {};
 
-            keyValue[country.getName()] = country.getCities().reduce(function (previousValue, sum) {
-                previousValue += sum.getPopulation();
+            keyValue[country.name] = country.getCities().reduce(function (previousValue, sum) {
+                previousValue += sum.population;
 
                 return previousValue;
             }, 0);
@@ -77,6 +68,4 @@ function activateCountryScript() {
 
     printMaxCityCountry(countriesArray);
     getCityPopulationArray(countriesArray);
-}
-
-activateCountryScript();
+}(1));

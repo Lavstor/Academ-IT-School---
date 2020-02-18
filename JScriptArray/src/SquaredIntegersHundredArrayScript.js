@@ -1,19 +1,19 @@
 (function () {
     var hundredArray = [];
 
-    var getHundredArray = function (array) {
+    var fillHundredArray = function (array) {
         while (array.length !== 100) {
             array.push(array.length + 1);
         }
     };
 
-    getHundredArray(hundredArray);
+    fillHundredArray(hundredArray);
 
     function getSquaresEvenNumbersList(array) {
         var squaresEvenNumbersList = [];
 
-        array.filter(function (el) {
-            return el % 2 === 0;
+        array.filter(function (element) {
+            return element % 2 === 0;
         }).forEach(function (value) {
             squaresEvenNumbersList.push(value * value);
         });
