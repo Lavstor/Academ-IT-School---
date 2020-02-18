@@ -25,7 +25,7 @@ function activateCountryScript() {
         }
     }
 
-    var countriesScript = [
+    var countriesArray = [
         createCountry("Имаджинария", [createCity("Маленький городишка", 2),
             createCity("Большой городишка", 200), createCity("Город", 100)]),
         createCountry("Санктуарий", [createCity("Ромазановск", 900000000)]),
@@ -34,51 +34,47 @@ function activateCountryScript() {
         createCountry("Московская", [createCity("Пошкандыбал", 324534643753243254236243),
             createCity("Сведловск", 200), createCity("Многолюдовск", 223123124)]),
         createCountry("Смурфлэнд", [createCity("Смурфятник", 2000000000000000),
-            createCity("Сумрфетник", 123124214), createCity("Смурффффяяяятинаа", 2000000000000000000000000000000)]),
+            createCity("Сумрфетник", 123124214), createCity("Смурффффяяяятинаа", 2)]),
         createCountry("Муркланд", [createCity("Мяу", 900),
             createCity("МфуМяу", 1000), createCity("Мяяяяу", 2000)])];
 
-    function getMaxCityCountry(country) {
+    function printMaxCityCountry(country) {
         var count = 0;
         var answer = [];
+            country.forEach(function (country) {
+                var currentCityCount = country.getCities().length;
 
-        for (var i = 0; i < country.length; i++) {
-            var currentCityCount = country[i].getCities().length;
+                if (currentCityCount > count) {
+                    count = currentCityCount;
+                    answer = [country.getName()];
+                } else if (currentCityCount === count) {
+                    answer.push([country.getName()]);
+                }
+            });
 
-            if (currentCityCount > count) {
-                count = currentCityCount;
-                answer = [country[i]];
-            } else if (currentCityCount === count) {
-                answer.push([country[i]]);
-            }
-        }
-
-        return answer;
+        console.log("Страна(ы) с максимальным кол-вом городов: ", answer.join(", "));
     }
-
-    console.log(getMaxCityCountry(countriesScript));
 
     function getCityPopulationArray(countries) {
         var answer = [];
 
-        for (var i = 0; i < countries.length; i++) {
+        countries.forEach(function (country) {
             var keyValue = {};
-            var name = countries[i].getName();
 
-            var population = 0;
+            keyValue[country.getName()] = country.getCities().reduce(function (previousValue, sum) {
+                previousValue += sum.getPopulation();
 
-            countries[i].getCities().forEach(function (country) {
-                population += country.getPopulation()
-            });
+                return previousValue;
+            }, 0);
 
-            keyValue[name] = population;
             answer.push(keyValue)
-        }
+        });
 
-        return answer;
+        console.log(answer);
     }
 
-    console.log(getCityPopulationArray(countriesScript));
+    printMaxCityCountry(countriesArray);
+    getCityPopulationArray(countriesArray);
 }
 
 activateCountryScript();
