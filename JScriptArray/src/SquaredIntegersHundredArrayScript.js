@@ -1,4 +1,4 @@
-function writeHundredSquaredArray() {
+(function () {
     var hundredArray = [];
 
     var getHundredArray = function (array) {
@@ -22,7 +22,6 @@ function writeHundredSquaredArray() {
     }
 
     console.log("Массив квадратов четных чисел от 1 до 100: ", getSquaresEvenNumbersList(hundredArray).join(", "));
-}
+}(1));
 
-writeHundredSquaredArray();
 

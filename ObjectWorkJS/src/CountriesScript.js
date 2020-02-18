@@ -39,11 +39,11 @@ function activateCountryScript() {
         createCountry("Муркланд", [createCity("Мяу", 900),
             createCity("МфуМяу", 1000), createCity("Мяяяяу", 2000)])];
 
-    function printMaxCityCountry(country) {
+    function printMaxCityCountry(countries) {
         var count = 0;
         var answer = [];
 
-        country.forEach(function (country) {
+        countries.forEach(function (country) {
             var currentCityCount = country.getCities().length;
 
             if (currentCityCount > count) {
