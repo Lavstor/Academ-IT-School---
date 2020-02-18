@@ -27,7 +27,8 @@ function activateCountryScript() {
 
     var countriesArray = [
         createCountry("Имаджинария", [createCity("Маленький городишка", 2),
-            createCity("Большой городишка", 200), createCity("Город", 100)]),
+            createCity("Большой городишка", 200), createCity("Город", 100),
+            createCity("Город2", 100), createCity("Город3", 100)]),
         createCountry("Санктуарий", [createCity("Ромазановск", 900000000)]),
         createCountry("Новосибирская", [createCity("Помазаников", 900),
             createCity("Кошатник", 1)]),
@@ -41,16 +42,17 @@ function activateCountryScript() {
     function printMaxCityCountry(country) {
         var count = 0;
         var answer = [];
-            country.forEach(function (country) {
-                var currentCityCount = country.getCities().length;
 
-                if (currentCityCount > count) {
-                    count = currentCityCount;
-                    answer = [country.getName()];
-                } else if (currentCityCount === count) {
-                    answer.push([country.getName()]);
-                }
-            });
+        country.forEach(function (country) {
+            var currentCityCount = country.getCities().length;
+
+            if (currentCityCount > count) {
+                count = currentCityCount;
+                answer = [country.getName()];
+            } else if (currentCityCount === count) {
+                answer.push([country.getName()]);
+            }
+        });
 
         console.log("Страна(ы) с максимальным кол-вом городов: ", answer.join(", "));
     }
