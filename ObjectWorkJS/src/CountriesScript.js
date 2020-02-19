@@ -2,10 +2,7 @@
     function createCountry(name, cities) {
         return {
             name: name,
-            cities: cities,
-            getCities: function () {
-                return this.cities;
-            }
+            cities: cities
         };
     }
 
@@ -13,7 +10,7 @@
         return {
             name: name,
             population: population
-        }
+        };
     }
 
     var countriesArray = [
@@ -30,42 +27,38 @@
         createCountry("Муркланд", [createCity("Мяу", 900),
             createCity("МфуМяу", 1000), createCity("Мяяяяу", 2000)])];
 
-    function printMaxCityCountry(countries) {
+    function getMaxCityPopulationCountry(countries) {
         var count = 0;
         var answer = [];
 
         countries.forEach(function (country) {
-            var currentCityCount = country.getCities().length;
+            var currentCitiesCount = country.cities.length;
 
-            if (currentCityCount > count) {
-                count = currentCityCount;
+            if (currentCitiesCount > count) {
+                count = currentCitiesCount;
                 answer = [country.name];
-            } else if (currentCityCount === count) {
+            } else if (currentCitiesCount === count) {
                 answer.push([country.name]);
             }
         });
 
-        console.log("Страна(ы) с максимальным кол-вом городов: ", answer.join(", "));
+        return answer;
     }
 
     function getCityPopulationArray(countries) {
-        var answer = [];
+        var keyValue = {};
 
         countries.forEach(function (country) {
-            var keyValue = {};
-
-            keyValue[country.name] = country.getCities().reduce(function (previousValue, sum) {
+            keyValue[country.name] = country.cities.reduce(function (previousValue, sum) {
                 previousValue += sum.population;
 
                 return previousValue;
             }, 0);
-
-            answer.push(keyValue)
         });
 
-        console.log(answer);
+        return keyValue;
     }
 
-    printMaxCityCountry(countriesArray);
-    getCityPopulationArray(countriesArray);
+    console.log("Страна(ы) с максимальным кол-вом городов: ", getMaxCityPopulationCountry(countriesArray).join(", "));
+    console.log("Объект (страна/популяция): ", getCityPopulationArray(countriesArray));
 }(1));
