@@ -51,4 +51,4 @@
 
     console.log("Страна(ы) с максимальным кол-вом городов: ", getMaxCityPopulationCountry(countriesArray).join(", "));
     console.log("Объект (страна/популяция): ", getCityPopulationArray(countriesArray));
-}(1));
+})();
