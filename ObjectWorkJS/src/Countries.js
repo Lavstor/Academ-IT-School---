@@ -1,12 +1,12 @@
 (function () {
-    var countriesArray = [{
+    var countries = [{
         name: "Имаджинария",
         cities: [{name: "2134", population: 1}, {name: "2fdf", population: 1}, {name: "2fdf", population: 1},
             {name: "2fdf68585568", population: 1}]
     }, {
         name: "8423758234",
         cities: [{name: "2134423re", population: 240}, {name: "2fdfwegdg", population: 24},
-            {name: "2fdf324525td3", population: 2424}]
+            {name: "2fdf324525td3", population: 100}]
     }, {
         name: "8423758dsfdff",
         cities: [{name: "2134345426e", population: 299}, {name: "2fdfwegdg", population: 25464},
@@ -47,6 +47,6 @@
         return keyValue;
     }
 
-    console.log("Страна(ы) с максимальным кол-вом городов: ", getMaxCityPopulationCountry(countriesArray).join(", "));
-    console.log("Объект (страна/популяция): ", getCityPopulationArray(countriesArray));
+    console.log("Страна(ы) с максимальным кол-вом городов: ", getMaxCityPopulationCountry(countries).join(", "));
+    console.log("Объект (страна/популяция): ", getCityPopulationArray(countries));
 })();
