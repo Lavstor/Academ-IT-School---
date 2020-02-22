@@ -40,9 +40,7 @@
 
         countries.forEach(function (country) {
             keyValue[country.name] = country.cities.reduce(function (previousValue, sum) {
-                previousValue += sum.population;
-
-                return previousValue;
+                return previousValue + sum.population;
             }, 0);
         });
 
