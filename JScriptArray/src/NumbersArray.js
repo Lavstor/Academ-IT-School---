@@ -8,12 +8,12 @@
     }
 
     function getEvenNumbersSum(array) {
-        return array.reduce(function (previousValue, sum) {
-            if (sum % 2 === 0) {
-                return previousValue + sum;
+        return array.reduce(function (accumulator, currentValue) {
+            if (currentValue % 2 === 0) {
+                return accumulator + currentValue;
             }
 
-            return previousValue;
+            return accumulator;
         }, 0);
     }
 
