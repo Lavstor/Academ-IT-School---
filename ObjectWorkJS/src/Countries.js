@@ -59,7 +59,7 @@
         }
     ];
 
-    function getMaxCityCountries(countries) {
+    function getMaxCityQuantityCountries(countries) {
         var count = 0;
         var result = [];
 
@@ -89,6 +89,6 @@
         return keyValue;
     }
 
-    console.log("Страна(ы) с максимальным кол-вом городов: ", getMaxCityCountries(countries));
+    console.log("Страна(ы) с максимальным кол-вом городов: ", getMaxCityQuantityCountries(countries));
     console.log("Объект (страна/популяция): ", getCountryPopulationObject(countries));
 })();
