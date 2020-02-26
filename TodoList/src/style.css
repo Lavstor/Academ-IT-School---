@@ -1,0 +1,17 @@
+.newLi {
+    border: none;
+    background-color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    color: #6c757d;
+    margin-top: 20px;
+}
+
+.newLi:focus {
+    outline: none;
+    color: #a21e58;
+}
+
+
+
+
