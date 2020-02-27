@@ -1,4 +1,4 @@
-.newLi {
+.newJob {
     border: none;
     background-color: #FFFFFF;
     font-size: 18px;
@@ -7,11 +7,21 @@
     margin-top: 20px;
 }
 
-.newLi:focus {
+.newJob:focus {
     outline: none;
     color: #a21e58;
 }
 
+.cancel {
+    float: right;
+    margin-left: 20px;
+}
 
+.confirm {
+    float: right;
+}
 
-
+.form-control {
+    display: inline-block;
+    width: 70%;
+}

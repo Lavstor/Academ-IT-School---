@@ -1,20 +1,47 @@
-$('.newLi').on('click', function () {
-    console.log("add");
-    var newElem = $('<li class="list-group-item list-group-item-action"><a class="redact">asdasd</a>\n' +
-        '                <button type="button" class="close btn-circle" data-dismiss="alert" aria-label="Close">\n' +
-        '                    <span aria-hidden="true">&times;</span>\n' +
-        '                </button>\n' +
-        '            </li><script ></script>');
-    $('.todo-list').append(newElem);
-});
+$(document).ready(function () {
+    $('body').on('click', '.newJob', function () {
+        $('.todo-list').append($('' +
+            '<li class="list-group-item list-group-item-action todo">' +
+            '<a class="redact"></a>' +
+            '<button type="button" class="close btn-circle">' +
+            '<span aria-hidden="true">&times;' +
+            '</span>' +
+            '</button>' +
+            '</li>'));
+    }).on('click', '.close', function () {
+        this.parentNode.remove();
+    }).on('click', '.todo', function () {
+        if (!isBusy) {
+            isBusy = true;
+            before = this;
 
-$('.close').on('click', function (e) {
-    console.log("delete");
-    $(e.currentTarget.parentNode).remove();
-});
+            $(this).replaceWith('' +
+                '<li class="list-group-item list-group-item-action input">' +
+                '<input type="text" placeholder="What u want to do?" class="form-control" aria-label="Default">' +
+                '<button type="button" class="cancel btn btn-outline-danger">' +
+                '<span aria-hidden="true">Cancel</span>' +
+                '</button>' +
+                '<button type="button" class="confirm btn btn-outline-success">' +
+                '<span aria-hidden="true">Confirm</span>' +
+                '</button>' +
+                '</li>');
+        }
+    }).on('click', '.cancel', function () {
+        replace(this, before);
+        isBusy = false;
+    }).on('click', '.confirm', function () {
+        // noinspection JSUnresolvedVariable
+        before.firstChild.textContent = this.parentNode.firstChild.value;
 
-$('.list-group-item-action').on('click', function (e) {
-    console.log("edit");
-    e.currentTarget.firstChild.nextSibling.innerText = "123";
+        replace(this, before);
+        isBusy = false;
+    });
+
+    function replace(convertible, convertTo) {
+        $(convertible.parentNode).replaceWith(convertTo);
+    }
+
+    var before;
+    var isBusy = false;
 });
 
