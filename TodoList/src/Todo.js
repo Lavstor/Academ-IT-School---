@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('body').on('click', '.newJob', function () {
         $('.todo-list').append($('' +
             '<li class="list-group-item list-group-item-action todo">' +
-            '<a class="redact"></a>' +
+            '<a class="redact">...</a>' +
             '<button type="button" class="close btn-circle">' +
             '<span aria-hidden="true">&times;' +
             '</span>' +
@@ -11,7 +11,7 @@ $(document).ready(function () {
     }).on('click', '.close', function () {
         this.parentNode.remove();
     }).on('click', '.todo', function () {
-        if (!isBusy) {
+        if (!isBusy && this.parentNode !== null) {
             isBusy = true;
             before = this;
 
