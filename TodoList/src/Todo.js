@@ -13,7 +13,7 @@ $(document).ready(function () {
     }).on('click', '.todo', function () {
         if (!isBusy && this.parentNode !== null) {
             isBusy = true;
-            before = this;
+            beforeRedact = this;
 
             $(this).replaceWith('' +
                 '<li class="list-group-item list-group-item-action input">' +
@@ -27,13 +27,13 @@ $(document).ready(function () {
                 '</li>');
         }
     }).on('click', '.cancel', function () {
-        replace(this, before);
+        replace(this, beforeRedact);
         isBusy = false;
     }).on('click', '.confirm', function () {
         // noinspection JSUnresolvedVariable
-        before.firstChild.textContent = this.parentNode.firstChild.value;
+        beforeRedact.firstChild.textContent = this.parentNode.firstChild.value;
 
-        replace(this, before);
+        replace(this, beforeRedact);
         isBusy = false;
     });
 
@@ -41,7 +41,7 @@ $(document).ready(function () {
         $(convertible.parentNode).replaceWith(convertTo);
     }
 
-    var before;
+    var beforeRedact;
     var isBusy = false;
 });
 
