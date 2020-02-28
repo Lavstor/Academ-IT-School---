@@ -1,4 +1,34 @@
 (function () {
+    function getMaxCityQuantityCountries(countries) {
+        var count = 0;
+        var result = [];
+
+        countries.forEach(function (country) {
+            var currentCitiesCount = country.cities.length;
+
+            if (currentCitiesCount > count) {
+                count = currentCitiesCount;
+                result = [country];
+            } else if (currentCitiesCount === count) {
+                result.push([country]);
+            }
+        });
+
+        return result;
+    }
+
+    function getCountryPopulationObject(countries) {
+        var keyValue = {};
+
+        countries.forEach(function (country) {
+            keyValue[country.name] = country.cities.reduce(function (accumulator, currentValue) {
+                return accumulator + currentValue.population;
+            }, 0);
+        });
+
+        return keyValue;
+    }
+
     var countries = [
         {
             name: "Имаджинария",
@@ -58,36 +88,6 @@
             ]
         }
     ];
-
-    function getMaxCityQuantityCountries(countries) {
-        var count = 0;
-        var result = [];
-
-        countries.forEach(function (country) {
-            var currentCitiesCount = country.cities.length;
-
-            if (currentCitiesCount > count) {
-                count = currentCitiesCount;
-                result = [country];
-            } else if (currentCitiesCount === count) {
-                result.push([country]);
-            }
-        });
-
-        return result;
-    }
-
-    function getCountryPopulationObject(countries) {
-        var keyValue = {};
-
-        countries.forEach(function (country) {
-            keyValue[country.name] = country.cities.reduce(function (accumulator, currentValue) {
-                return accumulator + currentValue.population;
-            }, 0);
-        });
-
-        return keyValue;
-    }
 
     console.log("Страна(ы) с максимальным кол-вом городов: ", getMaxCityQuantityCountries(countries));
     console.log("Объект (страна/популяция): ", getCountryPopulationObject(countries));
