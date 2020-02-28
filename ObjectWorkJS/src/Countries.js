@@ -34,56 +34,59 @@
             name: "Имаджинария",
             cities: [
                 {
-                    name: "2134", population: 1
+                    name: "Москва", population: 1
                 },
                 {
-                    name: "2fdf", population: 1
+                    name: "Иркутск", population: 1
                 },
                 {
-                    name: "2fdf", population: 1
+                    name: "Смурклянд", population: 1
                 }
             ]
         },
         {
-            name: "8423758234",
+            name: "Помазаников",
             cities: [
                 {
-                    name: "2134423re", population: 240
+                    name: "Помяукин", population: 240
                 },
                 {
-                    name: "2fdfwegdg", population: 24
+                    name: "Мяукин", population: 24
                 },
                 {
-                    name: "2fdf324525td3", population: 100
+                    name: "Мякушкин", population: 100
                 }
             ]
         },
         {
-            name: "8423758dsfdff",
+            name: "Пошкандыбал",
             cities: [
                 {
-                    name: "2134345426e", population: 299
+                    name: "Город N", population: 299
                 },
                 {
-                    name: "2fdfwegdg", population: 25464
+                    name: "Новый пошкандыбал", population: 25464
                 },
                 {
-                    name: "2fdf324525td3", population: 24776824
+                    name: "Старый пошкандыбал", population: 24776824
                 }
             ]
         },
         {
-            name: "832432678567080f",
+            name: "Тюмень",
             cities: [
                 {
-                    name: "213434erwergdfs5426e", population: 299
+                    name: "Город 1", population: 299
                 },
                 {
-                    name: "2fdfwegqwewqrt435dg",
+                    name: "Город два",
                     population: 25008464
                 },
                 {
-                    name: "2fdf3-0-525td3", population: 247769989824
+                    name: "Третий город", population: 247769989824
+                },
+                {
+                    name: "4 город", population: 247769989824
                 }
             ]
         }
