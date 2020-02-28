@@ -25,3 +25,7 @@
     display: inline-block;
     width: 70%;
 }
+
+.redact{
+    max-width: 70%;
+}
