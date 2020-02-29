@@ -6,22 +6,27 @@ document.addEventListener("DOMContentLoaded", function (evt) {
     var newTodoTextField = document.getElementById("new-todo");
     var addButton = document.getElementById("add-todo-button");
 
-
     addButton.addEventListener("click", function () {
         errorMassage.style.display = "none";
         var text = newTodoTextField.value;
 
-        if (text === "") {
-            errorMassage.style.display = "block";
+        if (errorMassageCheck(text)) {
             return;
         }
 
         var li = createTodoItem(text);
-
         tasksList.appendChild(li);
-
         newTodoTextField.value = "";
     });
+
+    function errorMassageCheck(text) {
+        if (text === "") {
+            errorMassage.style.display = "block";
+            return true;
+        }
+
+        return false;
+    }
 
     var isBusy = false;
 
@@ -37,24 +42,27 @@ document.addEventListener("DOMContentLoaded", function (evt) {
         });
 
         li.children[2].addEventListener("click", function () {
-            if(isBusy){
+            if (isBusy) {
                 return;
             }
 
             isBusy = true;
-            var liBefore = li;
-
+            var textBeforeRedact = li.children[0].textContent;
 
             li.innerHTML = "<input type='text'><button type='button'>Cancel</button><button type='button'>Confirm</button>";
-            console.log(liBefore);
 
             li.children[2].addEventListener("click", function () {
-                liBefore[0].textContent = li.children[0].value;
-                li = liBefore;
+                var newText = li.children[0].value;
+
+                if (!errorMassageCheck(newText)) {
+                    li.replaceWith(createTodoItem(li.children[0].value));
+                    isBusy = false;
+                }
             });
 
             li.children[1].addEventListener("click", function () {
-                li.replaceWith(liBefore);
+                li.replaceWith(createTodoItem(textBeforeRedact));
+                isBusy = false;
             });
         });
 
