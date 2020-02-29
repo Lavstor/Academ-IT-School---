@@ -10,7 +10,7 @@
                 count = currentCitiesCount;
                 result = [country];
             } else if (currentCitiesCount === count) {
-                result.push([country]);
+                result.push(country);
             }
         });
 
@@ -84,9 +84,6 @@
                 },
                 {
                     name: "Третий город", population: 247769989824
-                },
-                {
-                    name: "4 город", population: 247769989824
                 }
             ]
         }
