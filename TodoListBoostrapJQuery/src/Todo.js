@@ -37,8 +37,8 @@ $(document).ready(function () {
         isBusy = false;
     });
 
-    function replace(convertible, convertTo) {
-        $(convertible.parentNode).replaceWith(convertTo);
+    function replace(convertibleParentNode, convertTo) {
+        $(convertibleParentNode.parentNode).replaceWith(convertTo);
     }
 
     var beforeRedact;

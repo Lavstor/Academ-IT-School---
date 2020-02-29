@@ -1,24 +1,4 @@
-document.addEventListener("DOMContentLoaded", function (evt) {
-    var todoListPage = document.querySelector(".todo-list-page");
-    var errorMassage = todoListPage.querySelector(".error-massage");
-
-    var tasksList = document.getElementById("tasks-list");
-    var newTodoTextField = document.getElementById("new-todo");
-    var addButton = document.getElementById("add-todo-button");
-
-    addButton.addEventListener("click", function () {
-        errorMassage.style.display = "none";
-        var text = newTodoTextField.value;
-
-        if (errorMassageCheck(text)) {
-            return;
-        }
-
-        var li = createTodoItem(text);
-        tasksList.appendChild(li);
-        newTodoTextField.value = "";
-    });
-
+document.addEventListener("DOMContentLoaded", function () {
     function errorMassageCheck(text) {
         if (text === "") {
             errorMassage.style.display = "block";
@@ -68,4 +48,24 @@ document.addEventListener("DOMContentLoaded", function (evt) {
 
         return li;
     }
+
+    var todoListPage = document.querySelector(".todo-list-page");
+    var errorMassage = todoListPage.querySelector(".error-massage");
+
+    var tasksList = document.getElementById("tasks-list");
+    var newTodoTextField = document.getElementById("new-todo");
+
+    var addButton = document.getElementById("add-todo-button");
+    addButton.addEventListener("click", function () {
+        errorMassage.style.display = "none";
+        var text = newTodoTextField.value;
+
+        if (errorMassageCheck(text)) {
+            return;
+        }
+
+        var li = createTodoItem(text);
+        tasksList.appendChild(li);
+        newTodoTextField.value = "";
+    });
 });
