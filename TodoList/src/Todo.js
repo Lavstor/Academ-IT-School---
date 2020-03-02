@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
     }
 
-    var isBusy = false;
-
     function createTodoItem(text) {
         var li = document.createElement("li");
 
@@ -18,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         li.children[0].textContent = text;
 
         li.children[1].addEventListener("click", function () {
-            li.remove();
+            li.parentNode.removeChild(li);
         });
 
         li.children[2].addEventListener("click", function () {
@@ -31,6 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             li.innerHTML = "<input type='text'><button type='button'>Cancel</button><button type='button'>Confirm</button>";
 
+            li.children[1].addEventListener("click", function () {
+                li.replaceWith(createTodoItem(textBeforeRedact));
+                isBusy = false;
+            });
+
             li.children[2].addEventListener("click", function () {
                 var newText = li.children[0].value;
 
@@ -39,16 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     isBusy = false;
                 }
             });
-
-            li.children[1].addEventListener("click", function () {
-                li.replaceWith(createTodoItem(textBeforeRedact));
-                isBusy = false;
-            });
         });
 
         return li;
     }
 
+    var isBusy = false;
     var todoListPage = document.querySelector(".todo-list-page");
     var errorMassage = todoListPage.querySelector(".error-massage");
 
@@ -58,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var addButton = document.getElementById("add-todo-button");
     addButton.addEventListener("click", function () {
         errorMassage.style.display = "none";
+
         var text = newTodoTextField.value;
 
         if (errorMassageCheck(text)) {
@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         var li = createTodoItem(text);
+
         tasksList.appendChild(li);
         newTodoTextField.value = "";
     });
