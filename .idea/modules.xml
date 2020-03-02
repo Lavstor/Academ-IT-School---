@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/Html/Html.iml" filepath="$PROJECT_DIR$/Html/Html.iml" />
       <module fileurl="file://$PROJECT_DIR$/JScriptArray/JScriptArray.iml" filepath="$PROJECT_DIR$/JScriptArray/JScriptArray.iml" />
       <module fileurl="file://$PROJECT_DIR$/ObjectWorkJS/ObjectWorkJS.iml" filepath="$PROJECT_DIR$/ObjectWorkJS/ObjectWorkJS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PhoneBookJQuery/PhoneBookJQuery.iml" filepath="$PROJECT_DIR$/PhoneBookJQuery/PhoneBookJQuery.iml" />
       <module fileurl="file://$PROJECT_DIR$/TemperatureConverter/TemperatureConverter.iml" filepath="$PROJECT_DIR$/TemperatureConverter/TemperatureConverter.iml" />
       <module fileurl="file://$PROJECT_DIR$/TodoList/TodoList.iml" filepath="$PROJECT_DIR$/TodoList/TodoList.iml" />
       <module fileurl="file://$PROJECT_DIR$/TodoListBoostrapJQuery/TodoListBoostrapJQuery.iml" filepath="$PROJECT_DIR$/TodoListBoostrapJQuery/TodoListBoostrapJQuery.iml" />

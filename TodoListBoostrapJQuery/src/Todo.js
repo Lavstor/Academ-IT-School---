@@ -17,7 +17,7 @@ $(document).ready(function () {
 
             $(this).replaceWith('' +
                 '<li class="list-group-item list-group-item-action input">' +
-                '<input type="text" placeholder="What u want to do?" class="form-control" aria-label="Default" maxlength= 100>' +
+                '<input type="text" placeholder="What u want to do?" class="form-control" aria-label="Default" maxlength= 50>' +
                 '<button type="button" class="cancel btn btn-outline-danger">' +
                 '<span aria-hidden="true">Cancel</span>' +
                 '</button>' +
