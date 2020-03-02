@@ -9,7 +9,7 @@ $(document).ready(function () {
             '</button>' +
             '</li>'));
     }).on('click', '.close', function () {
-        this.parentNode.remove();
+        $(this.parentNode).remove();
     }).on('click', '.todo', function () {
         if (!isBusy && this.parentNode !== null) {
             isBusy = true;
