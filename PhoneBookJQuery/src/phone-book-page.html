@@ -5,6 +5,7 @@
     <title>PhoneBook</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="styleSheet" href="table-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 </head>
 <body>
 <div class="main-container">
@@ -28,12 +29,14 @@
         <label> Имя: <input type="text" class="input" id="first-name" placeholder="Имя"></label>
         <label> Телефон: <input type="tel" class="input" id="telephone-number" placeholder="Номер телефона"></label>
         <button id="add-button" type="button">Добавить</button>
+        <div style="display: none" id="error-massage">Ошибка, надо больше букв!</div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
             crossorigin="anonymous">
     </script>
     <script src="Table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 </div>
 </body>
 </html>
