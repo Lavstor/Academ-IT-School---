@@ -4,7 +4,7 @@ $(document).ready(function () {
     }).on('click', '.close', function () {
         $(this.parentNode).remove();
     }).on('click', '.todo', function () {
-            $(this).replaceWith(editableLi(this));
+        $(this).replaceWith(editableLi(this));
     });
 
     function editableLi(node) {
@@ -27,19 +27,27 @@ $(document).ready(function () {
         input.value = textBefore;
 
         cancel.addEventListener("click", function () {
-            replace (li[0], newLi(textBefore));
+            li[0].replaceWith(newLi(textBefore)[0])
         });
 
         confirm.addEventListener("click", function () {
-            replace(li[0], newLi(textBefore));
+            if (input.value === "") {
+                input.value = "Error! Submit some work!";
+
+                $(input).css("color","red");
+
+                return;
+            }
+
+            li[0].replaceWith(newLi(input.value)[0])
         });
 
         return li[0];
     }
 
     function newLi(text) {
-         return $('<li class="list-group-item list-group-item-action todo">' +
-            '<a class="redact">'+ text +'</a>' +
+        return $('<li class="list-group-item list-group-item-action todo">' +
+            '<a class="redact">' + text + '</a>' +
             '<button type="button" class="close btn-circle">' +
             '<span aria-hidden="true">&times;' +
             '</span>' +
