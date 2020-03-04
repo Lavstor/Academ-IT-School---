@@ -1,13 +1,13 @@
 $(document).ready(function () {
-    $('body').on('click', '.newJob', function () {
+    $("body").on("click", ".newJob", function () {
         $('.todo-list').append(newLi("???"));
-    }).on('click', '.close', function () {
-        $(this.parentNode).remove();
-    }).on('click', '.todo', function () {
-        $(this).replaceWith(editableLi(this));
+    }).on("click", ".close", function () {
+        this.parentNode.parentNode.removeChild(this.parentNode);
+    }).on("click", ".todo", function () {
+        $(this).replaceWith(inputForm(this));
     });
 
-    function editableLi(node) {
+    function inputForm(node) {
         var textBefore = node.firstChild.textContent;
 
         var li = $('<li class="list-group-item list-group-item-action input">' +
@@ -27,14 +27,17 @@ $(document).ready(function () {
         input.value = textBefore;
 
         cancel.addEventListener("click", function () {
+            $(input).css("color", "#000000");
+
             li[0].replaceWith(newLi(textBefore)[0])
         });
 
         confirm.addEventListener("click", function () {
+            $(input).css("color", "#000000");
+
             if (input.value === "") {
                 input.value = "Error! Submit some work!";
-
-                $(input).css("color","red");
+                $(input).css("color", "#F20E20");
 
                 return;
             }
@@ -53,10 +56,6 @@ $(document).ready(function () {
             '</span>' +
             '</button>' +
             '</li>');
-    }
-
-    function replace(convertibleParentNode, convertTo) {
-        convertibleParentNode.parentNode.parentNode.replaceChild(convertTo, convertibleParentNode.parentNode);
     }
 });
 
