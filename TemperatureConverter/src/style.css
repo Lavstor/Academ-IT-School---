@@ -68,3 +68,9 @@
 .result {
     margin-top: 30px;
 }
+
+.error-massage {
+    position: absolute;
+    margin-left: 10px;
+    color: #b21172;
+}
