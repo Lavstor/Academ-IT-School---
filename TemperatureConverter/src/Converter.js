@@ -11,10 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return Math.floor(number * 100) / 100;
     }
 
+    var converterPage = document.querySelector(".converter-container");
     var inputValue = document.querySelector(".input");
     var fahrenheit = document.querySelector(".fahrenheit");
     var kelvin = document.querySelector(".kelvin");
-    var errorMassage = document.querySelector(".error-massage");
+    var errorMassage = converterPage.querySelector(".error-massage");
 
     var button = document.querySelector(".transfer");
     button.addEventListener("click", function () {
