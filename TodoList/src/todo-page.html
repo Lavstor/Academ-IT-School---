@@ -9,15 +9,17 @@
 </head>
 <body>
 <div class="todo-list-page">
-    <h1>TODO list</h1>
-    <div>
+    <h1>Списочек дел</h1>
+    <div class="input-container">
         <label for="new-todo">Введите текст: </label><input id="new-todo" type="text">
         <button id="add-todo-button" type="button">Добавить</button>
-        <div style="display: none" class="error-massage">Ошибка, надо больше букв!</div>
+        <div style="display: none" class="error-message">Ошибка, надо больше букв!</div>
     </div>
-    <ul id="tasks-list">
-    </ul>
-    <script src="Todo.js"></script>
+    <div class="output-container">
+        <ul id="tasks-list">
+        </ul>
+    </div>
 </div>
+<script src="Todo.js"></script>
 </body>
 </html>

@@ -1,3 +1,33 @@
-.error-massage {
+.todo-list-page h1 {
     color: #a21e58;
+    font-weight: bold;
+    font-size: 40px;
+    padding-bottom: 20px;
+    margin-left: 30px;
+}
+
+.output-container {
+    margin: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.output-container > ul > li button {
+    background-color: #25c000;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.output-container > ul > li > button:first-of-type {
+    background-color: #c0191e;
+}
+
+.error-message {
+    margin-left: 10px;
+    color: #a21e58;
+}
+
+.input-container {
+    margin-left: 20px;
+    font-size: 18px;
 }

@@ -1,45 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
-    function errorMassageCheck(text) {
-        if (text === "") {
-            errorMassage.style.display = "block";
-            return true;
-        }
-
-        return false;
-    }
-
     function createTodoItem(text) {
         var li = document.createElement("li");
+        li.innerHTML = "<span></span><button type='button'>X</button><button type='button'>Изменить</button>";
 
-        li.innerHTML = "<span></span><button type='button'>X</button><button type='button'>Redact</button>";
+        var liSpan = li.children[0];
+        var liDelete = li.children[1];
+        var liChange = li.children[2];
 
-        li.children[0].textContent = text;
+        liSpan.textContent = text;
 
-        li.children[1].addEventListener("click", function () {
+        liDelete.addEventListener("click", function () {
             li.parentNode.removeChild(li);
         });
 
-        li.children[2].addEventListener("click", function () {
-            if (isBusy) {
-                return;
-            }
+        liChange.addEventListener("click", function () {
+            var textBeforeEditing = liSpan.textContent;
 
-            isBusy = true;
-            var textBeforeRedact = li.children[0].textContent;
+            li.innerHTML = "<input type='text'><button type='button'>Отмена</button><button type='button'>Принять</button>" +
+                "<div style='display:none' class='error-message'>Ошибка, надо больше букв!</div>";
+            var liInput = li.children[0];
+            var liCancel = li.children[1];
+            var liConfirm = li.children[2];
+            var liErrorMessage = li.children[3];
 
-            li.innerHTML = "<input type='text'><button type='button'>Cancel</button><button type='button'>Confirm</button>";
+            liInput.value = textBeforeEditing;
 
-            li.children[1].addEventListener("click", function () {
-                li.replaceWith(createTodoItem(textBeforeRedact));
-                isBusy = false;
+            liCancel.addEventListener("click", function () {
+                li.parentNode.replaceChild(createTodoItem(textBeforeEditing), li);
             });
 
-            li.children[2].addEventListener("click", function () {
-                var newText = li.children[0].value;
+            liConfirm.addEventListener("click", function () {
+                var newText = liInput.value;
 
-                if (!errorMassageCheck(newText)) {
-                    li.replaceWith(createTodoItem(li.children[0].value));
-                    isBusy = false;
+                if (newText !== "") {
+                    li.parentNode.replaceChild(createTodoItem(liInput.value), li);
+                } else {
+                    liErrorMessage.style.display = "inline-block";
                 }
             });
         });
@@ -47,20 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
         return li;
     }
 
-    var isBusy = false;
     var todoListPage = document.querySelector(".todo-list-page");
-    var errorMassage = todoListPage.querySelector(".error-massage");
+    var errorMessage = todoListPage.querySelector(".error-message");
 
     var tasksList = document.getElementById("tasks-list");
     var newTodoTextField = document.getElementById("new-todo");
 
     var addButton = document.getElementById("add-todo-button");
     addButton.addEventListener("click", function () {
-        errorMassage.style.display = "none";
+        errorMessage.style.display = "none";
 
         var text = newTodoTextField.value;
 
-        if (errorMassageCheck(text)) {
+        if (text === "") {
+            errorMessage.style.display = "inline-block";
             return;
         }
 

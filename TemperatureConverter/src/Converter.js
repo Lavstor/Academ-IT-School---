@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var inputValue = document.querySelector(".input");
     var fahrenheit = document.querySelector(".fahrenheit");
     var kelvin = document.querySelector(".kelvin");
-    var errorMassage = converterPage.querySelector(".error-massage");
+    var errorMassage = converterPage.querySelector(".error-message");
 
     var button = document.querySelector(".transfer");
     button.addEventListener("click", function () {
