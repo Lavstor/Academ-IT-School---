@@ -44,11 +44,13 @@
     margin-top: 20px;
 }
 
-.delete-button{
+.delete-button {
     border: none;
     background: none;
 }
 
-.error-massage {
-    color: #a21e58;
+#error-massage {
+    color: #a20004;
+    font-weight: bold;
+    font-size: 20px;
 }

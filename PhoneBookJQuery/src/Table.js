@@ -1,52 +1,65 @@
 $(document).ready(function () {
     $(".main-container").on('click', '#add-button', function () {
-        errorMassage.css("display : none");
-
         var inputNodes = [$("#last-name"), $("#first-name"), $("#telephone-number")];
 
+        var lastName = inputNodes[0];
+        var firstName = inputNodes[1];
+        var phone = inputNodes[2];
+
         if (!isValid(inputNodes)) {
-            errorMassage.css("display : block");
-            errorMassage.val("321");
+            $(errorMassage).css("display", "block");
+            $(errorMassage).text("Заполните все поля!");
+
             return;
         }
 
         if (!isValidPhone(inputNodes[2])) {
-            errorMassage.css("display : block");
-            console.log(errorMassage);
-            errorMassage.text("123");
+            phone.css({
+                "background-color": "#FE2C2A"
+            });
+
+            $(errorMassage).css("display", "block");
+            $(errorMassage).text("Такой номер уже есть!");
             return;
         }
 
+        $(errorMassage).css("display", "none");
+
         $("#telephone-holder-info").append($("" +
             "<tr>" +
+            "<td class='check-box'><label><input type='checkbox'></label></td>" +
             "<td class='current-number'>" + currentId + "</td>" +
-            "<td class='last-name'>" + $(inputNodes[0]).val() + "</td>" +
-            "<td class='first-name'>" + $(inputNodes[1]).val() + "</td>" +
-            "<td class='telephone'>" + $(inputNodes[2]).val() + "</td>" +
+            "<td class='last-name'>" + $(lastName).val() + "</td>" +
+            "<td class='first-name'>" + $(firstName).val() + "</td>" +
+            "<td class='telephone'>" + $(phone).val() + "</td>" +
             "<td><button type='button' class='delete-button'>X</button></td>" +
             "</tr>"));
 
-        $(inputNodes[0]).val('');
-        $(inputNodes[1]).val('');
-        $(inputNodes[2]).val('');
+        $(lastName).val('');
+        $(firstName).val('');
+        $(phone).val('');
 
         currentId++;
     }).on("click", ".delete-button", function () {
-        var trDelete = $(this).closest("tr");
-        var deleteIndex = $(trDelete).find(".current-number").text();
+        $(this).closest("input:checkbox").attr('checked', "true");
+        console.log($(this).parent('tr').children('input:checkbox'));
 
-       $.confirm({
+        $.confirm({
             title: 'Confirm!',
             content: 'Delete?!',
             buttons: {
                 confirm: function () {
-                    $(trDelete).remove();
-                    currentId--;
+                    $("input:checkbox:checked:enabled").each(function (index, trToDelete) {
+                        var trDelete = $(trToDelete).closest("tr");
+                        var deleteIndex = $(trDelete).find(".current-number").text();
+                        $(trDelete).remove();
+                        currentId--;
 
-                    idReforming(deleteIndex);
+                        idReforming(deleteIndex);
+                    });
                 },
                 cancel: function () {
-                   this.close();
+                    this.close();
                 }
             }
         });
