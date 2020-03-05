@@ -9,13 +9,18 @@
 </head>
 <body>
 <div class="main-container">
+    <div class="filter-box">
+        <label> Фильтр: <input type="text" class="input" id="filter" placeholder="Фильтр"></label>
+        <button id="confirm-filter-button" type="button">Фильтровать</button>
+        <button id="cancel-filter-button" type="button">Отменить</button>
+    </div>
     <div class="table-container">
         <table class="main-table">
             <thead>
             <tr>
                 <th>
                     <label>
-                        <input type="checkbox">
+                        <input type="checkbox" id="mass-delete">
                     </label>
                 </th>
                 <th>№</th>

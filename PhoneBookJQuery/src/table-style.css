@@ -44,6 +44,10 @@
     margin-top: 20px;
 }
 
+.filter-box {
+    margin: 20px;
+}
+
 .delete-button {
     border: none;
     background: none;
