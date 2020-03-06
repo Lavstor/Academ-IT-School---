@@ -8,8 +8,6 @@ $(document).ready(function () {
     });
 
     function inputForm(node) {
-        var textBefore = node.firstChild.textContent;
-
         var li = $('<li class="list-group-item list-group-item-action input">' +
             '<input type="text" placeholder="What u want to do?" class="form-control" aria-label="Default" maxlength= 50>' +
             '<button type="button" class="cancel btn btn-outline-danger">' +
@@ -20,6 +18,7 @@ $(document).ready(function () {
             '</button>' +
             '</li>');
 
+        var textBefore = node.firstChild.textContent;
         var input = li[0].children[0];
         var cancel = li[0].children[1];
         var confirm = li[0].children[2];
