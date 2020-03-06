@@ -43,14 +43,15 @@ $(document).ready(function () {
             content: 'Delete?!',
             buttons: {
                 confirm: function () {
-                    $(nodeToDelete).closest("tr").remove();
+                    var deleteThisCharacters = $("input:checkbox:checked:enabled");
 
-                    $("input:checkbox:checked:enabled").each(function (index, nodeToDelete) {
+                    deleteThisCharacters.append($(nodeToDelete).closest("tr"));
+                    currentId -= deleteThisCharacters.length;
+
+                    $(deleteThisCharacters).each(function (index, nodeToDelete) {
                         var trDelete = $(nodeToDelete).closest(".user-info");
                         var deleteIndex = $(trDelete).find(".current-number").text();
-
                         $(trDelete).remove();
-                        currentId--;
 
                         idReforming(deleteIndex);
                         $("#mass-delete").prop("checked", false);
