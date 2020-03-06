@@ -114,9 +114,9 @@ $(document).ready(function () {
     }
 
     function idReforming() {
-        var changeableNumber = $(".main-table .current-number");
-
         if (currentId > 1) {
+            var changeableNumber = $(".main-table .current-number");
+
             for (var i = currentId - 2; i <= changeableNumber.length; i++) {
                 $(changeableNumber[i]).text(i + 1);
             }
