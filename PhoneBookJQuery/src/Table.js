@@ -43,19 +43,20 @@ $(document).ready(function () {
             content: 'Delete?!',
             buttons: {
                 confirm: function () {
-                    var deleteThisCharacters = $("input:checkbox:checked:enabled");
+                    $(nodeToDelete).closest("tr").remove();
+                    currentId--;
 
-                    deleteThisCharacters.append($(nodeToDelete).closest("tr"));
+                    var deleteThisCharacters = $("input:checkbox:checked:enabled");
                     currentId -= deleteThisCharacters.length;
 
                     $(deleteThisCharacters).each(function (index, nodeToDelete) {
                         var trDelete = $(nodeToDelete).closest(".user-info");
-                        var deleteIndex = $(trDelete).find(".current-number").text();
-                        $(trDelete).remove();
 
-                        idReforming(deleteIndex);
+                        $(trDelete).remove();
                         $("#mass-delete").prop("checked", false);
                     });
+
+                    idReforming();
                 },
                 cancel: function () {
                     this.close();
@@ -112,11 +113,11 @@ $(document).ready(function () {
         });
     }
 
-    function idReforming(startIndex) {
+    function idReforming() {
         var changeableNumber = $(".main-table .current-number");
 
-        if (changeableNumber.length > 1) {
-            for (var i = startIndex - 1; i < changeableNumber.length; i++) {
+        if (currentId > 1) {
+            for (var i = currentId - 2; i <= changeableNumber.length; i++) {
                 $(changeableNumber[i]).text(i + 1);
             }
         }
