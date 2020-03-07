@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         liChange.addEventListener("click", function () {
-            var textBeforeEditing = liSpan.textContent;
-
             li.innerHTML = "<input type='text'><button type='button'>Отмена</button><button type='button'>Принять</button>" +
                 "<div style='display:none' class='error-message'>Ошибка, надо больше букв!</div>";
+
+            var textBeforeEditing = liSpan.textContent;
             var liInput = li.children[0];
             var liCancel = li.children[1];
             var liConfirm = li.children[2];
