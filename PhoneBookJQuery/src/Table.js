@@ -7,7 +7,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (!isValidPhone(inputNodes[2])) {
+        if (!isValidPhone(phone)) {
             phone.css({
                 "background-color": "#FE2C2A"
             });
@@ -23,7 +23,7 @@ $(document).ready(function () {
         $("#telephone-holder-info").append($("" +
             "<tr class='user-info'>" +
             "<td><label><input type='checkbox' class='check-box'></label></td>" +
-            "<td class='current-number'>" + currentId + "</td>" +
+            "<td class='current-number'>" + serialNumber + "</td>" +
             "<td class='last-name'>" + $(lastName).val() + "</td>" +
             "<td class='first-name'>" + $(firstName).val() + "</td>" +
             "<td class='telephone'>" + $(phone).val() + "</td>" +
@@ -34,29 +34,29 @@ $(document).ready(function () {
         $(firstName).val('');
         $(phone).val('');
 
-        currentId++;
+        serialNumber++;
     }).on("click", ".delete-button", function () {
-        var nodeToDelete = this;
+        var clickedButton = this;
 
         $.confirm({
             title: 'Confirm!',
             content: 'Delete?!',
             buttons: {
                 confirm: function () {
-                    $(nodeToDelete).closest("tr").remove();
-                    currentId--;
+                    $(clickedButton).closest("tr").remove();
+                    serialNumber--;
 
-                    var deleteThisCharacters = $("input:checkbox:checked:enabled");
-                    currentId -= deleteThisCharacters.length;
+                    var deleteRows = $("input:checkbox:checked:enabled");
+                    serialNumber -= deleteRows.length;
 
-                    $(deleteThisCharacters).each(function (index, nodeToDelete) {
+                    $(deleteRows).each(function (index, nodeToDelete) {
                         var trDelete = $(nodeToDelete).closest(".user-info");
 
                         $(trDelete).remove();
                         $("#mass-delete").prop("checked", false);
                     });
 
-                    currentNumberReforming();
+                    serialNumberReforming();
                 },
                 cancel: function () {
                     this.close();
@@ -113,8 +113,8 @@ $(document).ready(function () {
         });
     }
 
-    function currentNumberReforming() {
-        if (currentId > 1) {
+    function serialNumberReforming() {
+        if (serialNumber > 1) {
             var changeableNumber = $(".main-table .current-number");
 
             $(changeableNumber).each(function (index, element) {
@@ -158,6 +158,6 @@ $(document).ready(function () {
     var firstName = inputNodes[1];
     var phone = inputNodes[2];
     var filter = $("#filter");
-    var currentId = 1;
+    var serialNumber = 1;
     var errorMassage = $("#error-massage");
 });
