@@ -56,7 +56,7 @@ $(document).ready(function () {
                         $("#mass-delete").prop("checked", false);
                     });
 
-                    idReforming();
+                    currentNumberReforming();
                 },
                 cancel: function () {
                     this.close();
@@ -113,13 +113,13 @@ $(document).ready(function () {
         });
     }
 
-    function idReforming() {
+    function currentNumberReforming() {
         if (currentId > 1) {
             var changeableNumber = $(".main-table .current-number");
 
-            for (var i = currentId - 2; i <= changeableNumber.length; i++) {
-                $(changeableNumber[i]).text(i + 1);
-            }
+            $(changeableNumber).each(function (index, element) {
+                $(element).text(index + 1);
+            });
         }
     }
 
