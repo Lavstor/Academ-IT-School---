@@ -1,14 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     function getKelvin(value) {
-        return floorNumber(value + 273.15);
+        return (value + 273.15).toFixed(2);
     }
 
     function getFahrenheit(value) {
-        return floorNumber(value * 9 / 5 + 32);
-    }
-
-    function floorNumber(number) {
-        return Math.floor(number * 100) / 100;
+        return (value * 9 / 5 + 32).toFixed(2);
     }
 
     var converterPage = document.querySelector(".converter-container");
@@ -21,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", function () {
         if (inputValue.value === "") {
             errorMassage.style.display = "block";
+
             return;
         }
 
