@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    $("body").on("click", ".newJob", function () {
-        $('.todo-list').append(newLi("???"));
+    $("body").on("click", ".add-job", function () {
+        $('.todo-list').append(newLi(""));
     }).on("click", ".close", function () {
         this.parentNode.parentNode.removeChild(this.parentNode);
     }).on("click", ".todo", function () {
@@ -9,11 +9,11 @@ $(document).ready(function () {
 
     function inputForm(node) {
         var li = $('<li class="list-group-item list-group-item-action input">' +
-            '<input type="text" placeholder="What u want to do?" class="form-control" aria-label="Default" maxlength= 50>' +
-            '<button type="button" class="cancel btn btn-outline-danger">' +
+            '<input type="text" placeholder="What u want to do?" class="form-control d-inline-block w-100" aria-label="Default">' +
+            '<button type="button" class="cancel btn btn-outline-danger ml-2 mb-1 mt-2">' +
             '<span aria-hidden="true">Cancel</span>' +
             '</button>' +
-            '<button type="button" class="confirm btn btn-outline-success">' +
+            '<button type="button" class="confirm btn btn-outline-success ml-3 mb-1 mt-2">' +
             '<span aria-hidden="true">Confirm</span>' +
             '</button>' +
             '</li>');
@@ -51,8 +51,7 @@ $(document).ready(function () {
         return $('<li class="list-group-item list-group-item-action todo">' +
             '<a class="redact">' + text + '</a>' +
             '<button type="button" class="close btn-circle">' +
-            '<span aria-hidden="true">&times;' +
-            '</span>' +
+            '<span aria-hidden="true" class="h6">Удалить</span>' +
             '</button>' +
             '</li>');
     }

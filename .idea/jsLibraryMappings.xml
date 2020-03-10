@@ -2,6 +2,6 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$/PhoneBookJQuery" libraries="{jquery-3.4.1.slim, jquery-confirm}" />
-    <file url="file://$PROJECT_DIR$/TodoListBoostrapJQuery" libraries="{bootstrap, popper}" />
+    <file url="file://$PROJECT_DIR$/TodoListBootstrapJQuery" libraries="{bootstrap, popper}" />
   </component>
 </project>
