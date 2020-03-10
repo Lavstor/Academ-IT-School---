@@ -1,22 +1,21 @@
 $(document).ready(function () {
-    $("body").on("click", ".add-job", function () {
+    $("#add-new-job").on("click", function () {
         $('.todo-list').append(newLi(""));
-    }).on("click", ".close", function () {
-        this.parentNode.parentNode.removeChild(this.parentNode);
-    }).on("click", ".todo", function () {
-        $(this).replaceWith(inputForm(this));
     });
 
     function inputForm(node) {
         var li = $('<li class="list-group-item list-group-item-action input">' +
-            '<input type="text" placeholder="What u want to do?" class="form-control d-inline-block w-100" aria-label="Default">' +
+            '<input type="text" placeholder="What u want to do?" class="form-control d-inline-block w-100" ' +
+            'aria-label="Default" maxlength="50">' +
             '<button type="button" class="cancel btn btn-outline-danger ml-2 mb-1 mt-2">' +
             '<span aria-hidden="true">Cancel</span>' +
             '</button>' +
             '<button type="button" class="confirm btn btn-outline-success ml-3 mb-1 mt-2">' +
             '<span aria-hidden="true">Confirm</span>' +
             '</button>' +
-            '</li>');
+            '</li>').on("click", "input", function () {
+            $(this).select();
+        });
 
         var textBefore = node.firstChild.textContent;
         var input = li[0].children[0];
@@ -53,7 +52,11 @@ $(document).ready(function () {
             '<button type="button" class="close btn-circle">' +
             '<span aria-hidden="true" class="h6">Удалить</span>' +
             '</button>' +
-            '</li>');
+            '</li>').on("click", ".close", function () {
+            this.parentNode.parentNode.removeChild(this.parentNode);
+        }).on("click", function () {
+            $(this).replaceWith(inputForm(this));
+        });
     }
 });
 
