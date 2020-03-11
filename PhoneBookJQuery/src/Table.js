@@ -44,9 +44,10 @@ $(document).ready(function () {
             buttons: {
                 confirm: function () {
                     $(clickedButton).closest("tr").remove();
-                    serialNumber--;
 
                     var deleteRows = $("input:checkbox:checked:enabled");
+                    console.log(deleteRows.length);
+
                     serialNumber -= deleteRows.length;
 
                     $(deleteRows).each(function (index, nodeToDelete) {
@@ -101,9 +102,9 @@ $(document).ready(function () {
         showAllTr();
     });
 
-    jQuery.expr[":"].Contains = jQuery.expr.createPseudo(function (arg) {
+    $.expr[":"].Contains = $.expr.createPseudo(function (arg) {
         return function (elem) {
-            return jQuery(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+            return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
         };
     });
 
@@ -114,13 +115,11 @@ $(document).ready(function () {
     }
 
     function serialNumberReforming() {
-        if (serialNumber > 1) {
             var changeableNumber = $(".main-table .current-number");
 
             $(changeableNumber).each(function (index, element) {
                 $(element).text(index + 1);
             });
-        }
     }
 
     function isValid(nodes) {
