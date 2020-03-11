@@ -58,3 +58,8 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+/*noinspection SpellCheckingInspection*/
+.jconfirm-box {
+    width: 35%;
+}

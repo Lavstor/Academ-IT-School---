@@ -58,12 +58,9 @@ $(document).ready(function () {
                     });
 
                     serialNumberReforming();
-                    if(serialNumber <= 0){
+                    if (serialNumber <= 0) {
                         serialNumber = 1;
                     }
-                },
-                cancel: function () {
-                    this.close();
                 }
             }
         });
@@ -118,11 +115,11 @@ $(document).ready(function () {
     }
 
     function serialNumberReforming() {
-            var changeableNumber = $(".main-table .current-number");
+        var changeableNumber = $(".main-table .current-number");
 
-            $(changeableNumber).each(function (index, element) {
-                $(element).text(index + 1);
-            });
+        $(changeableNumber).each(function (index, element) {
+            $(element).text(index + 1);
+        });
     }
 
     function isValid(nodes) {
@@ -130,13 +127,13 @@ $(document).ready(function () {
 
         nodes.forEach(function (node) {
             if ($(node).val() === "") {
-                node.css({
+                $(node).css({
                     "background-color": "#FE2C2A"
                 });
 
                 isValid = false;
             } else {
-                node.css({
+                $(node).css({
                     "background-color": "#FEEED6"
                 });
             }
