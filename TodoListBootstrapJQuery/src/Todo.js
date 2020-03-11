@@ -4,9 +4,9 @@ $(document).ready(function () {
     });
 
     function inputForm(textBefore) {
-        var input = $('<input type="text" placeholder="What u want to do?" class="form-control d-inline-block w-100" ' +
+        var input = $('<input type="text" placeholder="What u want to do?" class="form-control d-inline-block w-100 text-dark" ' +
             'aria-label="Default" maxlength="50">').on("click", function () {
-            $(this).css("color", "#000000");
+            $(this).addClass("text-dark");
             $(this).select();
         });
 
@@ -23,7 +23,8 @@ $(document).ready(function () {
             '</button>').on("click", function () {
             if ($(input).val() === "") {
                 $(input).val("Error! Submit some work!");
-                $(input).css("color", "#F20E20");
+                $(input).removeClass("text-dark");
+                $(input).addClass("text-danger");
 
                 return;
             }
