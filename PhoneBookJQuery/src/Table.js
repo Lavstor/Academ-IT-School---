@@ -44,9 +44,9 @@ $(document).ready(function () {
             buttons: {
                 confirm: function () {
                     $(clickedButton).closest("tr").remove();
+                    serialNumber--;
 
                     var deleteRows = $("input:checkbox:checked:enabled");
-                    console.log(deleteRows.length);
 
                     serialNumber -= deleteRows.length;
 
@@ -58,6 +58,9 @@ $(document).ready(function () {
                     });
 
                     serialNumberReforming();
+                    if(serialNumber <= 0){
+                        serialNumber = 1;
+                    }
                 },
                 cancel: function () {
                     this.close();
