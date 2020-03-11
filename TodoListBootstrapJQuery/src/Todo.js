@@ -3,59 +3,52 @@ $(document).ready(function () {
         $('.todo-list').append(newLi(""));
     });
 
-    function inputForm(node) {
-        var li = $('<li class="list-group-item list-group-item-action input">' +
-            '<input type="text" placeholder="What u want to do?" class="form-control d-inline-block w-100" ' +
-            'aria-label="Default" maxlength="50">' +
-            '<button type="button" class="cancel btn btn-outline-danger ml-2 mb-1 mt-2">' +
-            '<span aria-hidden="true">Cancel</span>' +
-            '</button>' +
-            '<button type="button" class="confirm btn btn-outline-success ml-3 mb-1 mt-2">' +
-            '<span aria-hidden="true">Confirm</span>' +
-            '</button>' +
-            '</li>').on("click", "input", function () {
+    function inputForm(textBefore) {
+        var input = $('<input type="text" placeholder="What u want to do?" class="form-control d-inline-block w-100" ' +
+            'aria-label="Default" maxlength="50">').on("click", function () {
+            $(this).css("color", "#000000");
             $(this).select();
         });
 
-        var textBefore = node.firstChild.textContent;
-        var input = li[0].children[0];
-        var cancel = li[0].children[1];
-        var confirm = li[0].children[2];
+        $(input).val(textBefore);
 
-        input.value = textBefore;
-
-        cancel.addEventListener("click", function () {
-            $(input).css("color", "#000000");
-
-            li[0].replaceWith(newLi(textBefore)[0])
+        var cancel = $('<button type="button" class="cancel btn btn-outline-danger ml-2 mb-1 mt-2">' +
+            '<span aria-hidden="true">Cancel</span>' +
+            '</button>').on("click", function () {
+            $(newTodoLi).replaceWith(newLi(textBefore));
         });
 
-        confirm.addEventListener("click", function () {
-            $(input).css("color", "#000000");
-
-            if (input.value === "") {
-                input.value = "Error! Submit some work!";
+        var confirm = $('<button type="button" class="confirm btn btn-outline-success ml-3 mb-1 mt-2">' +
+            '<span aria-hidden="true">Confirm</span>' +
+            '</button>').on("click", function () {
+            if ($(input).val() === "") {
+                $(input).val("Error! Submit some work!");
                 $(input).css("color", "#F20E20");
 
                 return;
             }
 
-            li[0].replaceWith(newLi(input.value)[0])
+            $(newTodoLi).replaceWith(newLi($(input).val()));
         });
 
-        return li[0];
+        var newTodoLi = $('<li class="list-group-item list-group-item-action input"></li>');
+        $(newTodoLi).append(input);
+        $(newTodoLi).append(cancel);
+        $(newTodoLi).append(confirm);
+
+        return $(newTodoLi);
     }
 
-    function newLi(text) {
+    function newLi(todoText) {
         return $('<li class="list-group-item list-group-item-action todo">' +
-            '<a class="redact">' + text + '</a>' +
+            '<a class="redact">' + todoText + '</a>' +
             '<button type="button" class="close btn-circle">' +
             '<span aria-hidden="true" class="h6">Удалить</span>' +
             '</button>' +
             '</li>').on("click", ".close", function () {
-            this.parentNode.parentNode.removeChild(this.parentNode);
+            $(this).parent().remove();
         }).on("click", function () {
-            $(this).replaceWith(inputForm(this));
+            $(this).replaceWith(inputForm(todoText));
         });
     }
 });
