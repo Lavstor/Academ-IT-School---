@@ -61,6 +61,9 @@ $(document).ready(function () {
                     if (serialNumber <= 0) {
                         serialNumber = 1;
                     }
+                },
+                cancel: function () {
+                    this.close;
                 }
             }
         });
