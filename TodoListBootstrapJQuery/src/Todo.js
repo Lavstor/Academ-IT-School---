@@ -8,7 +8,6 @@ $(document).ready(function () {
 
         $('.todo-list').append(createNewLi(newJobInput.val()));
         newJobInput.val("");
-        $(newJobInput).addClass("text-dark");
     });
 
     function inputForm(textBefore) {
@@ -53,6 +52,7 @@ $(document).ready(function () {
             return true;
         }
 
+        $(input).addClass("text-dark");
         return false;
     }
 
