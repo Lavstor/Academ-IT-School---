@@ -2,12 +2,13 @@ $(document).ready(function () {
     var newJobInput = $("#newJobInput");
 
     $("#add-new-job").on("click", function () {
-        var input = newJobInput.val();
-
-        if(isEmpty(input)){
+        if (isEmpty(newJobInput)) {
             return;
         }
-        $('.todo-list').append(newLi(input));
+
+        $('.todo-list').append(createNewLi(newJobInput.val()));
+        newJobInput.val("");
+        $(newJobInput).addClass("text-dark");
     });
 
     function inputForm(textBefore) {
@@ -19,23 +20,23 @@ $(document).ready(function () {
 
         $(input).val(textBefore);
 
-        var cancel = $('<button type="button" class="cancel btn btn-outline-danger ml-2 mb-1 mt-2">' +
+        var cancel = $('<button type="button" class="cancel btn btn-outline-danger mb-1 mt-2">' +
             '<span aria-hidden="true">Cancel</span>' +
             '</button>').on("click", function () {
-            $(newTodoLi).replaceWith(newLi(textBefore));
+            $(newTodoLi).replaceWith(createNewLi(textBefore));
         });
 
         var confirm = $('<button type="button" class="confirm btn btn-outline-success ml-3 mb-1 mt-2">' +
             '<span aria-hidden="true">Confirm</span>' +
             '</button>').on("click", function () {
-                if(isEmpty($(input).val())){
-                    return;
-                }
+            if (isEmpty(input)) {
+                return;
+            }
 
-            $(newTodoLi).replaceWith(newLi($(input).val()));
+            $(newTodoLi).replaceWith(createNewLi($(input).val()));
         });
 
-        var newTodoLi = $('<li class="list-group-item list-group-item-action input"></li>');
+        var newTodoLi = $('<li class="list-group-item list-group-item-action input p-0"></li>');
         $(newTodoLi).append(input);
         $(newTodoLi).append(cancel);
         $(newTodoLi).append(confirm);
@@ -55,7 +56,7 @@ $(document).ready(function () {
         return false;
     }
 
-    function newLi(todoText) {
+    function createNewLi(todoText) {
         return $('<li class="list-group-item list-group-item-action todo">' +
             '<a class="redact">' + todoText + '</a>' +
             '<button type="button" class="close btn-circle">' +
