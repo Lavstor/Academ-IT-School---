@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".main-container").on('click', '#add-button', function () {
+    $('#add-button').click(function () {
         if (!isValid(inputNodes)) {
             $(errorMassage).css("display", "block");
             $(errorMassage).text("Заполните все поля!");
@@ -35,7 +35,9 @@ $(document).ready(function () {
         $(phone).val('');
 
         serialNumber++;
-    }).on("click", ".delete-button", function () {
+    });
+
+    $(".delete-button").click(function () {
         var clickedButton = this;
 
         $.confirm({
@@ -67,7 +69,9 @@ $(document).ready(function () {
                 }
             }
         });
-    }).on("click", "#mass-delete", function () {
+    });
+
+    $("#mass-delete").click(function () {
         if ($("#mass-delete").prop("checked")) {
             $("input:checkbox").each(function (index, tr) {
                 $(tr).prop("checked", true);
@@ -77,7 +81,8 @@ $(document).ready(function () {
                 $(tr).prop("checked", false);
             });
         }
-    }).on("click", ".check-box", function () {
+    });
+    $(".check-box").click(function () {
         if (!$(".check-box").prop("checked")) {
             $("#mass-delete").prop("checked", false);
         } else {
@@ -95,13 +100,17 @@ $(document).ready(function () {
                 $("#mass-delete").prop("checked", false);
             }
         }
-    }).on("click", "#confirm-filter-button", function () {
+    });
+
+    $("#confirm-filter-button").click(function () {
         showAllTr();
 
         $(".user-info:not(.user-info:Contains(" + $(filter).val() + "))").each(function (index, tr) {
             $(tr).hide();
         });
-    }).on("click", "#cancel-filter-button", function () {
+    });
+
+    $("#cancel-filter-button").click(function () {
         showAllTr();
     });
 
