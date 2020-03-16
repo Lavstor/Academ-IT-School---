@@ -1,6 +1,13 @@
 $(document).ready(function () {
+    var newJobInput = $("#newJobInput");
+
     $("#add-new-job").on("click", function () {
-        $('.todo-list').append(newLi(""));
+        var input = newJobInput.val();
+
+        if(isEmpty(input)){
+            return;
+        }
+        $('.todo-list').append(newLi(input));
     });
 
     function inputForm(textBefore) {
@@ -21,13 +28,9 @@ $(document).ready(function () {
         var confirm = $('<button type="button" class="confirm btn btn-outline-success ml-3 mb-1 mt-2">' +
             '<span aria-hidden="true">Confirm</span>' +
             '</button>').on("click", function () {
-            if ($(input).val() === "") {
-                $(input).val("Error! Submit some work!");
-                $(input).removeClass("text-dark");
-                $(input).addClass("text-danger");
-
-                return;
-            }
+                if(isEmpty($(input).val())){
+                    return;
+                }
 
             $(newTodoLi).replaceWith(newLi($(input).val()));
         });
@@ -38,6 +41,18 @@ $(document).ready(function () {
         $(newTodoLi).append(confirm);
 
         return $(newTodoLi);
+    }
+
+    function isEmpty(input) {
+        if ($(input).val() === "") {
+            $(input).val("Error! Submit some work!");
+            $(input).removeClass("text-dark");
+            $(input).addClass("text-danger");
+
+            return true;
+        }
+
+        return false;
     }
 
     function newLi(todoText) {
