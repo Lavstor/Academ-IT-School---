@@ -57,16 +57,21 @@ $(document).ready(function () {
     }
 
     function createNewLi(todoText) {
-        return $('<li class="list-group-item list-group-item-action todo">' +
-            '<a class="redact">' + todoText + '</a>' +
-            '<button type="button" class="close btn-circle">' +
+        var newLi = $('<li class="list-group-item list-group-item-action todo"></li>');
+        var newA = $('<a class="redact"></a>').text(todoText);
+        var deleteButton = $('<button type="button" class="close btn-circle">' +
             '<span aria-hidden="true" class="h6">Удалить</span>' +
-            '</button>' +
-            '</li>').on("click", ".close", function () {
+            '</button>').click(function () {
             $(this).parent().remove();
-        }).click(function () {
+        });
+
+        newLi.append(newA);
+        newLi.append(deleteButton);
+        newLi.click(function () {
             $(this).replaceWith(inputForm(todoText));
         });
+
+        return newLi;
     }
 });
 

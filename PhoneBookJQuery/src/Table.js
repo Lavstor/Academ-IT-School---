@@ -30,17 +30,20 @@ $(document).ready(function () {
         errorMessage.hide();
 
         var newTr = $("<tr class='user-info'></tr>");
-        var newTd = $("<td><label><input type='checkbox' class='check-box'></label></td>" +
-            "<td class='current-number'>" + serialNumber + "</td>" +
-            "<td class='last-name'>" + lastName.val() + "</td>" +
-            "<td class='first-name'>" + firstName.val() + "</td>" +
-            "<td class='telephone'>" + phone.val() + "</td>");
-
+        var checkBoxLine = $("<td><label><input type='checkbox' class='check-box'></label></td>");
+        var serialNumberLine = $("<td class='current-number'></td>").text(serialNumber);
+        var firstNameLine = $("<td class='first-name'></td>").text(firstName.val());
+        var lastNameLine = $("<td class='last-name'></td>").text(lastName.val());
+        var telephoneNameLine = $("<td class='telephone'></td>").text(phone.val());
         var deleteButton = $("<td><button type='button' class='delete-button'>X</button></td>").click(function () {
             confirmDelete($(this).closest("tr"));
         });
 
-        newTr.append(newTd);
+        newTr.append(checkBoxLine);
+        newTr.append(serialNumberLine);
+        newTr.append(firstNameLine);
+        newTr.append(lastNameLine);
+        newTr.append(telephoneNameLine);
         newTr.append(deleteButton);
 
         $("#telephone-holder-info").append(newTr);
