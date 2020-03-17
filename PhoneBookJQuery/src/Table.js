@@ -7,7 +7,6 @@ $(document).ready(function () {
     var serialNumber = 1;
     var errorMessage = $("#error-massage");
     var massDeleteCheckBox = $("#mass-delete");
-    var activated = false;
 
     $("#add-button").click(function () {
         if (!isValid(inputNodes)) {
@@ -30,17 +29,21 @@ $(document).ready(function () {
 
         errorMessage.hide();
 
-        $("#telephone-holder-info").append($("" +
-            "<tr class='user-info'>" +
-            "<td><label><input type='checkbox' class='check-box'></label></td>" +
+        var newTr = $("<tr class='user-info'></tr>");
+        var newTd = $("<td><label><input type='checkbox' class='check-box'></label></td>" +
             "<td class='current-number'>" + serialNumber + "</td>" +
             "<td class='last-name'>" + lastName.val() + "</td>" +
             "<td class='first-name'>" + firstName.val() + "</td>" +
-            "<td class='telephone'>" + phone.val() + "</td>" +
-            "<td><button type='button' class='delete-button'>X</button></td>" +
-            "</tr>")).on("click", function () {
-            confirmDelete($("input:checkbox:checked:enabled"));
+            "<td class='telephone'>" + phone.val() + "</td>");
+
+        var deleteButton = $("<td><button type='button' class='delete-button'>X</button></td>").click(function () {
+            confirmDelete($(this).closest("tr"));
         });
+
+        newTr.append(newTd);
+        newTr.append(deleteButton);
+
+        $("#telephone-holder-info").append(newTr);
 
         lastName.val("");
         firstName.val("");
@@ -49,9 +52,9 @@ $(document).ready(function () {
         serialNumber++;
     });
 
-    $("#delete-all").click(
-        confirmDelete()
-    );
+    $("#delete-all").click(function () {
+        confirmDelete($("input:checkbox:checked:enabled"));
+    });
 
     function confirmDelete(deleteArray) {
         // noinspection JSUnusedGlobalSymbols,NonAsciiCharacters
@@ -67,7 +70,7 @@ $(document).ready(function () {
                         var trDelete = $(nodeToDelete).closest(".user-info");
 
                         $(trDelete).remove();
-                        $("#mass-delete").prop("checked", false);
+                        massDeleteCheckBox.prop("checked", false);
                     });
 
                     serialNumberReforming();
@@ -107,7 +110,7 @@ $(document).ready(function () {
                 }
             });
 
-            isMassDelete === true ? massDeleteCheckBox.prop("checked", true) :  massDeleteCheckBox.prop("checked", false);
+            isMassDelete === true ? massDeleteCheckBox.prop("checked", true) : massDeleteCheckBox.prop("checked", false);
         }
     });
 
