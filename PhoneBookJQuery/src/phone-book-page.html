@@ -3,20 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>PhoneBook</title>
-    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="node_modules/jquery-confirm/css/jquery-confirm.css">
-    <link rel="styleSheet" href="table-style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-<div class="main-container">
-    <div class="filter-box">
-        <label> Фильтр: <input type="text" class="input" id="filter" placeholder="Фильтр"></label>
-        <button id="confirm-filter-button" type="button">Фильтровать</button>
-        <button id="cancel-filter-button" type="button">Отменить</button>
-    </div>
+<div class="main-container container">
     <div class="table-container">
-        <table class="main-table">
-            <thead>
+        <table class="main-table table-striped table-dark table">
+            <thead class="thead-dark">
             <tr>
                 <th>
                     <label>
@@ -28,7 +22,7 @@
                 <th>Имя</th>
                 <th>Номер телефона</th>
                 <th>
-                    <button id="delete-all" type="button">Удалить все</button>
+                    <button id="delete-all" class="btn btn btn-light" type="button">Удалить все</button>
                 </th>
             </tr>
             </thead>
@@ -36,16 +30,24 @@
             </tbody>
         </table>
     </div>
-    <div class="input-box">
-        <label> Фамилия: <input type="text" class="input" id="last-name" placeholder="Фамилия"></label>
-        <label> Имя: <input type="text" class="input" id="first-name" placeholder="Имя"></label>
-        <label> Телефон: <input type="tel" class="input" id="telephone-number" placeholder="Номер телефона"></label>
-        <button id="add-button" type="button">Добавить</button>
-        <div style="display: none" id="error-massage">Ошибка, надо больше букв!</div>
+    <div class="container-fluid">
+        <div class="input-box">
+            <label> Фамилия: <input type="text" class="input form-control" id="last-name" placeholder="Фамилия"></label>
+            <label> Имя: <input type="text" class="input form-control" id="first-name" placeholder="Имя"></label>
+            <label> Телефон: <input type="tel" class="input form-control" id="telephone-number" placeholder="Номер телефона"></label>
+            <button id="add-button" class="btn btn-dark mb-1" type="button">Добавить</button>
+            <div style="display: none" id="error-massage">Ошибка, надо больше букв!</div>
+        </div>
+        <div class="filter-box container-fluid p-0 mt-5">
+            <label> Фильтр: <input type="text" class="input form-control" id="filter" placeholder="Фильтр"></label>
+            <button id="confirm-filter-button" class="btn btn-dark mb-1" type="button">Фильтровать</button>
+            <button id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
+        </div>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="node_modules/jquery-confirm/js/jquery-confirm.js"></script>
+        <script src="Table.js"></script>
     </div>
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/jquery-confirm/js/jquery-confirm.js"></script>
-    <script src="Table.js"></script>
 </div>
 </body>
 </html>

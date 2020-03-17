@@ -35,7 +35,7 @@ $(document).ready(function () {
         var firstNameLine = $("<td class='first-name'></td>").text(firstName.val());
         var lastNameLine = $("<td class='last-name'></td>").text(lastName.val());
         var telephoneNameLine = $("<td class='telephone'></td>").text(phone.val());
-        var deleteButton = $("<td><button type='button' class='delete-button'>X</button></td>").click(function () {
+        var deleteButton = $("<td><button type='button' class='delete-button btn btn-dark'>X</button></td>").click(function () {
             confirmDelete($(this).closest("tr"));
         });
 
@@ -90,31 +90,27 @@ $(document).ready(function () {
     }
 
     massDeleteCheckBox.click(function () {
-        if (massDeleteCheckBox.prop("checked")) {
-            $("input:checkbox").each(function (index, tr) {
-                $(tr).prop("checked", true);
-            });
-        } else {
-            $("input:checkbox").each(function (index, tr) {
-                $(tr).prop("checked", false);
-            });
-        }
+        var isChecked;
+
+        massDeleteCheckBox.prop("checked") ? isChecked = true : isChecked = false;
+
+        $("input:checkbox").each(function (index, tr) {
+            $(tr).prop("checked", isChecked);
+        });
     });
 
     $(".check-box").click(function () {
-        if (!$(".check-box").prop("checked")) {
-            massDeleteCheckBox.prop("checked", false);
-        } else {
-            var isMassDelete = true;
+        var isMassDelete = true;
 
-            $(".check-box:checkbox").each(function (index, checkBox) {
-                if (!$(checkBox).prop("checked")) {
-                    isMassDelete = false;
-                }
-            });
+        $(".check-box").prop("checked") ? $(".check-box:checkbox").each(function (index, checkBox) {
+            if (!$(checkBox).prop("checked")) {
+                isMassDelete = false;
 
-            isMassDelete === true ? massDeleteCheckBox.prop("checked", true) : massDeleteCheckBox.prop("checked", false);
-        }
+                return false;
+            }
+        }) : massDeleteCheckBox.prop("checked", false);
+
+        isMassDelete === true ? massDeleteCheckBox.prop("checked", true) : massDeleteCheckBox.prop("checked", false);
     });
 
     $("#confirm-filter-button").click(function () {
@@ -154,15 +150,15 @@ $(document).ready(function () {
         var isValid = true;
 
         nodes.forEach(function (node) {
-            if (node.val() === "") {
-                node.css({
+            if ($(node).val() === "") {
+                $(node).css({
                     "background-color": "#FE2C2A"
                 });
 
                 isValid = false;
             } else {
-                node.css({
-                    "background-color": "#FEEED6"
+                $(node).css({
+                    "background-color": "#ffffff"
                 });
             }
         });
