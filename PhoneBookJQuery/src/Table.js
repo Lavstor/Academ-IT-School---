@@ -1,8 +1,18 @@
 $(document).ready(function () {
-    $('#add-button').click(function () {
+    var inputNodes = [$("#last-name"), $("#first-name"), $("#telephone-number")];
+    var lastName = inputNodes[0];
+    var firstName = inputNodes[1];
+    var phone = inputNodes[2];
+    var filter = $("#filter");
+    var serialNumber = 1;
+    var errorMessage = $("#error-massage");
+    var massDeleteCheckBox = $("#mass-delete");
+    var activated = false;
+
+    $("#add-button").click(function () {
         if (!isValid(inputNodes)) {
-            $(errorMassage).css("display", "block");
-            $(errorMassage).text("Заполните все поля!");
+            errorMessage.show();
+            errorMessage.text("Заполните все поля!");
 
             return;
         }
@@ -12,47 +22,48 @@ $(document).ready(function () {
                 "background-color": "#FE2C2A"
             });
 
-            $(errorMassage).css("display", "block");
-            $(errorMassage).text("Такой номер уже есть!");
+            errorMessage.show();
+            errorMessage.text("Такой номер уже есть!");
 
             return;
         }
 
-        $(errorMassage).css("display", "none");
+        errorMessage.hide();
 
         $("#telephone-holder-info").append($("" +
             "<tr class='user-info'>" +
             "<td><label><input type='checkbox' class='check-box'></label></td>" +
             "<td class='current-number'>" + serialNumber + "</td>" +
-            "<td class='last-name'>" + $(lastName).val() + "</td>" +
-            "<td class='first-name'>" + $(firstName).val() + "</td>" +
-            "<td class='telephone'>" + $(phone).val() + "</td>" +
+            "<td class='last-name'>" + lastName.val() + "</td>" +
+            "<td class='first-name'>" + firstName.val() + "</td>" +
+            "<td class='telephone'>" + phone.val() + "</td>" +
             "<td><button type='button' class='delete-button'>X</button></td>" +
-            "</tr>"));
+            "</tr>")).on("click", function () {
+            confirmDelete($("input:checkbox:checked:enabled"));
+        });
 
-        $(lastName).val('');
-        $(firstName).val('');
-        $(phone).val('');
+        lastName.val("");
+        firstName.val("");
+        phone.val("");
 
         serialNumber++;
     });
 
-    $(".delete-button").click(function () {
-        var clickedButton = this;
+    $("#delete-all").click(
+        confirmDelete()
+    );
+
+    function confirmDelete(deleteArray) {
+        // noinspection JSUnusedGlobalSymbols,NonAsciiCharacters
 
         $.confirm({
-            title: 'Confirm!',
-            content: 'Delete?!',
+            title: "Подтвердите удаление!",
+            content: "Удалить?",
             buttons: {
-                confirm: function () {
-                    $(clickedButton).closest("tr").remove();
-                    serialNumber--;
+                Удалить: function () {
+                    serialNumber -= deleteArray.length;
 
-                    var deleteRows = $("input:checkbox:checked:enabled");
-
-                    serialNumber -= deleteRows.length;
-
-                    $(deleteRows).each(function (index, nodeToDelete) {
+                    $(deleteArray).each(function (index, nodeToDelete) {
                         var trDelete = $(nodeToDelete).closest(".user-info");
 
                         $(trDelete).remove();
@@ -60,19 +71,20 @@ $(document).ready(function () {
                     });
 
                     serialNumberReforming();
+
                     if (serialNumber <= 0) {
                         serialNumber = 1;
                     }
                 },
-                cancel: function () {
+                Отмена: function () {
                     this.close;
                 }
             }
         });
-    });
+    }
 
-    $("#mass-delete").click(function () {
-        if ($("#mass-delete").prop("checked")) {
+    massDeleteCheckBox.click(function () {
+        if (massDeleteCheckBox.prop("checked")) {
             $("input:checkbox").each(function (index, tr) {
                 $(tr).prop("checked", true);
             });
@@ -82,9 +94,10 @@ $(document).ready(function () {
             });
         }
     });
+
     $(".check-box").click(function () {
         if (!$(".check-box").prop("checked")) {
-            $("#mass-delete").prop("checked", false);
+            massDeleteCheckBox.prop("checked", false);
         } else {
             var isMassDelete = true;
 
@@ -94,24 +107,21 @@ $(document).ready(function () {
                 }
             });
 
-            if (isMassDelete) {
-                $("#mass-delete").prop("checked", true);
-            } else {
-                $("#mass-delete").prop("checked", false);
-            }
+            isMassDelete === true ? massDeleteCheckBox.prop("checked", true) :  massDeleteCheckBox.prop("checked", false);
         }
     });
 
     $("#confirm-filter-button").click(function () {
         showAllTr();
 
-        $(".user-info:not(.user-info:Contains(" + $(filter).val() + "))").each(function (index, tr) {
+        $(".user-info:not(.user-info:Contains(" + filter.val() + "))").each(function (index, tr) {
             $(tr).hide();
         });
     });
 
     $("#cancel-filter-button").click(function () {
         showAllTr();
+        filter.val("");
     });
 
     $.expr[":"].Contains = $.expr.createPseudo(function (arg) {
@@ -129,7 +139,7 @@ $(document).ready(function () {
     function serialNumberReforming() {
         var changeableNumber = $(".main-table .current-number");
 
-        $(changeableNumber).each(function (index, element) {
+        changeableNumber.each(function (index, element) {
             $(element).text(index + 1);
         });
     }
@@ -138,14 +148,14 @@ $(document).ready(function () {
         var isValid = true;
 
         nodes.forEach(function (node) {
-            if ($(node).val() === "") {
-                $(node).css({
+            if (node.val() === "") {
+                node.css({
                     "background-color": "#FE2C2A"
                 });
 
                 isValid = false;
             } else {
-                $(node).css({
+                node.css({
                     "background-color": "#FEEED6"
                 });
             }
@@ -155,7 +165,7 @@ $(document).ready(function () {
     }
 
     function isValidPhone(telephoneNode) {
-        var text = $(telephoneNode).val();
+        var text = telephoneNode.val();
 
         var nodes = $(".main-table .telephone").filter(function (index, node) {
             return $(node).text() === text;
@@ -163,12 +173,4 @@ $(document).ready(function () {
 
         return nodes.length <= 0;
     }
-
-    var inputNodes = [$("#last-name"), $("#first-name"), $("#telephone-number")];
-    var lastName = inputNodes[0];
-    var firstName = inputNodes[1];
-    var phone = inputNodes[2];
-    var filter = $("#filter");
-    var serialNumber = 1;
-    var errorMassage = $("#error-massage");
 });

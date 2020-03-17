@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>PhoneBook</title>
     <link rel="stylesheet" href="reset.css">
-    <link rel="styleSheet" href="table-style.css">
     <link rel="stylesheet" href="node_modules/jquery-confirm/css/jquery-confirm.css">
+    <link rel="styleSheet" href="table-style.css">
 </head>
 <body>
 <div class="main-container">
@@ -27,7 +27,7 @@
                 <th>Фамилия</th>
                 <th>Имя</th>
                 <th>Номер телефона</th>
-                <th></th>
+                <th><button id="delete-all" type="button">Удалить все</button></th>
             </tr>
             </thead>
             <tbody id="telephone-holder-info">
@@ -42,8 +42,8 @@
         <div style="display: none" id="error-massage">Ошибка, надо больше букв!</div>
     </div>
     <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="Table.js"></script>
     <script src="node_modules/jquery-confirm/js/jquery-confirm.js"></script>
+    <script src="Table.js"></script>
 </div>
 </body>
 </html>
