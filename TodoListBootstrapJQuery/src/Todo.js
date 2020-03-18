@@ -6,7 +6,7 @@ $(document).ready(function () {
             return;
         }
 
-        $('.todo-list').append(createNewLi(newJobInput.val()));
+        $(".todo-list").append(createNewLi(newJobInput.val()));
         newJobInput.val("");
     });
 
