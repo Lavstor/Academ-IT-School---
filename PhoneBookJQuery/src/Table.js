@@ -17,9 +17,7 @@ $(document).ready(function () {
         }
 
         if (!isValidPhone(phone)) {
-            phone.css({
-                "background-color": "#FE2C2A"
-            });
+            phone.addClass("bg-danger");
 
             errorMessage.show();
             errorMessage.text("Такой номер уже есть!");
@@ -27,15 +25,29 @@ $(document).ready(function () {
             return;
         }
 
+        massDeleteCheckBox.prop("checked", false);
         errorMessage.hide();
 
         var newTr = $("<tr class='user-info'></tr>");
-        var checkBoxLine = $("<td><label><input type='checkbox' class='check-box'></label></td>");
-        var serialNumberLine = $("<td class='current-number'></td>").text(serialNumber);
-        var firstNameLine = $("<td class='first-name'></td>").text(firstName.val());
-        var lastNameLine = $("<td class='last-name'></td>").text(lastName.val());
-        var telephoneNameLine = $("<td class='telephone'></td>").text(phone.val());
-        var deleteButton = $("<td><button type='button' class='delete-button btn btn-dark'>X</button></td>").click(function () {
+        var checkBoxLine = $("<td><label><input type='checkbox' class='check-box'></label></td>").click(function () {
+            var isMassDelete = true;
+
+            $(".check-box:checkbox").each(function (index, checkBox) {
+                if (!$(checkBox).prop("checked")) {
+                    isMassDelete = false;
+
+                    return false;
+                }
+            });
+
+            isMassDelete ? massDeleteCheckBox.prop("checked", true) : massDeleteCheckBox.prop("checked", false);
+        });
+
+        var serialNumberLine = $("<td class='current-number can-filter'></td>").text(serialNumber);
+        var firstNameLine = $("<td class='first-name can-filter'></td>").text(firstName.val());
+        var lastNameLine = $("<td class='last-name can-filter'></td>").text(lastName.val());
+        var telephoneNameLine = $("<td class='telephone can-filter'></td>").text(phone.val());
+        var deleteButton = $("<td><button type='button' class='delete-button btn btn-danger'>X</button></td>").click(function () {
             confirmDelete($(this).closest("tr"));
         });
 
@@ -90,34 +102,12 @@ $(document).ready(function () {
     }
 
     massDeleteCheckBox.click(function () {
-        var isChecked;
+        var checkboxArray = $("input:checkbox");
 
-        massDeleteCheckBox.prop("checked") ? isChecked = true : isChecked = false;
-
-        $("input:checkbox").each(function (index, tr) {
-            $(tr).prop("checked", isChecked);
-        });
-    });
-
-    $(".check-box").click(function () {
-        var isMassDelete = true;
-
-        $(".check-box").prop("checked") ? $(".check-box:checkbox").each(function (index, checkBox) {
-            if (!$(checkBox).prop("checked")) {
-                isMassDelete = false;
-
-                return false;
-            }
-        }) : massDeleteCheckBox.prop("checked", false);
-
-        isMassDelete === true ? massDeleteCheckBox.prop("checked", true) : massDeleteCheckBox.prop("checked", false);
-    });
-
-    $("#confirm-filter-button").click(function () {
-        showAllTr();
-
-        $(".user-info:not(.user-info:Contains(" + filter.val() + "))").each(function (index, tr) {
-            $(tr).hide();
+        massDeleteCheckBox.prop("checked") ? checkboxArray.each(function (index, tr) {
+            $(tr).prop("checked", true);
+        }) : checkboxArray.each(function (index, tr) {
+            $(tr).prop("checked", false);
         });
     });
 
@@ -126,10 +116,21 @@ $(document).ready(function () {
         filter.val("");
     });
 
-    $.expr[":"].Contains = $.expr.createPseudo(function (arg) {
-        return function (elem) {
-            return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
-        };
+    $("#confirm-filter-button").click(function () {
+        showAllTr();
+
+        $(".user-info").each(function (index, row) {
+            var hideIt = true;
+
+            // noinspection JSUnresolvedFunction
+            $(row).children(".can-filter").each(function (index, section) {
+                if ($(section).text().toLowerCase().indexOf(filter.val().toLowerCase()) >= 0) {
+                    hideIt = false
+                }
+            });
+
+            hideIt === true ? $(row).hide() : $(row).show();
+        });
     });
 
     function showAllTr() {
@@ -151,15 +152,11 @@ $(document).ready(function () {
 
         nodes.forEach(function (node) {
             if ($(node).val() === "") {
-                $(node).css({
-                    "background-color": "#FE2C2A"
-                });
+                $(node).addClass("bg-danger");
 
                 isValid = false;
             } else {
-                $(node).css({
-                    "background-color": "#ffffff"
-                });
+                $(node).removeClass("bg-danger");
             }
         });
 
