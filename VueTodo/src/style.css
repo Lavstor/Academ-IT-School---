@@ -1,0 +1,4 @@
+.todo-list > li:hover {
+    cursor: pointer;
+}
+

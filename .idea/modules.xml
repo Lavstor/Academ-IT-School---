@@ -15,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/TodoList/TodoList.iml" filepath="$PROJECT_DIR$/TodoList/TodoList.iml" />
       <module fileurl="file://$PROJECT_DIR$/TodoListBootstrapJQuery/TodoListBootstrapJQuery.iml" filepath="$PROJECT_DIR$/TodoListBootstrapJQuery/TodoListBootstrapJQuery.iml" />
       <module fileurl="file://$PROJECT_DIR$/Underscore/Underscore.iml" filepath="$PROJECT_DIR$/Underscore/Underscore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VueTodo/VueTodo.iml" filepath="$PROJECT_DIR$/VueTodo/VueTodo.iml" />
     </modules>
   </component>
 </project>

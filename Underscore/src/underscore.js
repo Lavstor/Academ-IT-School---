@@ -54,11 +54,11 @@
 
     console.log(_.meanBy(peopleList, "age"));
 
-    console.log(_.sortBy(_.filter(peopleList, function (o) {
-        return o.age >= 20 && o.age <= 30;
-    }), "age"));
+   console.log(_.sortBy(peopleList, "age").filter(function (o) {
+       return o.age >= 20 && o.age <= 30;
+   })) ;
 
-    console.log(_.forEach(_.cloneDeep(peopleList), function (currentObj) {
-        currentObj["fullName"] = currentObj.name + " " + currentObj.lastName;
+    console.log(_.forEach(peopleList, function (currentObj) {
+        currentObj.fullName = currentObj.name + " " + currentObj.lastName;
     }));
 })();
