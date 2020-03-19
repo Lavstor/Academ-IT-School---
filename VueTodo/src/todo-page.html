@@ -13,10 +13,9 @@
     <div class="container-fluid p-0">
         <ul class="todo-list list-group list-group-flush"></ul>
         <div class="container-fluid list-group-flush mt-2 p-0 input-group" id="inpDiv">
-            {{ message }}
-            <input id="newJobInput" type="text" placeholder="What u want to do?" class="form-control
+            <input v-model="message" id="newJobInput" type="text" placeholder="What u want to do?" class="form-control
             text-dark" aria-label="Default" maxlength="50">
-            <button v-on:click="showAlert" type="button" id="add-new-job" class="add-job btn btn-info ml-1 float-right">
+            <button v-on:click="addNew" type="button" id="add-new-job" class="add-job btn btn-info ml-1 float-right">
                 <span aria-hidden="false">Add</span>
             </button>
             <div class='invalid-feedback'>Please submit some.</div>

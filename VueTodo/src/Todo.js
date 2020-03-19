@@ -1,14 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var inpDiv = new Vue({
-        el: "#inpDiv",
+    new Vue({
+        el: '#inpDiv',
         data: {
-            message: "Привет, Vue!"
+            newTodoText: '',
+            todos: [
+                {
+                    id: 1,
+                    title: 'Помыть посуду'
+                },
+                {
+                    id: 2,
+                    title: 'Вынести мусор'
+                },
+                {
+                    id: 3,
+                    title: 'Подстричь газон'
+                }
+            ],
+            nextTodoId: 4
         },
         methods: {
-            showAlert: function() {
-                this.message = this.message.indexOf("Привет") >= 0
-                    ? "Пока, Vue!" : "Привет, Vue!";
+            addNewTodo: function () {
+                this.todos.push({
+                    id: this.nextTodoId++,
+                    title: this.newTodoText
+                })
+                this.newTodoText = ''
             }
         }
-    });
+    })
 });
