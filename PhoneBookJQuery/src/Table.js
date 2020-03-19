@@ -11,22 +11,21 @@ $(document).ready(function () {
     $("#add-button").click(function () {
         if (!isValid(inputNodes)) {
             errorMessage.show();
-            errorMessage.text("Заполните все поля!");
+            errorMessage.text("Заполните поля!");
 
             return;
         }
 
         if (!isValidPhone(phone)) {
-            phone.addClass("bg-danger");
-
+            phone.addClass("is-invalid");
             errorMessage.show();
-            errorMessage.text("Такой номер уже есть!");
+            errorMessage.text("Телефон уже есть такой!");
 
             return;
         }
 
-        massDeleteCheckBox.prop("checked", false);
         errorMessage.hide();
+        massDeleteCheckBox.prop("checked", false);
 
         var newTr = $("<tr class='user-info'></tr>");
         var checkBoxLine = $("<td><label><input type='checkbox' class='check-box'></label></td>").click(function () {
@@ -151,12 +150,13 @@ $(document).ready(function () {
         var isValid = true;
 
         nodes.forEach(function (node) {
+
             if ($(node).val() === "") {
-                $(node).addClass("bg-danger");
+                $(node).addClass("is-invalid");
 
                 isValid = false;
             } else {
-                $(node).removeClass("bg-danger");
+                $(node).removeClass("is-invalid");
             }
         });
 
