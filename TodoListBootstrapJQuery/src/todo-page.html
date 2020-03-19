@@ -12,12 +12,13 @@
     <h1 class="mt-4">Todo List</h1>
     <div class="container-fluid p-0">
         <ul class="todo-list list-group list-group-flush"></ul>
-        <div class="container-fluid list-group-flush mt-2 p-0">
-            <input id="newJobInput" type="text" placeholder="What u want to do?" class="form-control d-inline-block w-50
-             text-dark" aria-label="Default" maxlength="50">
-            <button type="button" id="add-new-job" class="add-job w-25 btn btn-info mb-1">
-                <span aria-hidden="false">Добавить</span>
+        <div class="container-fluid list-group-flush mt-2 p-0 input-group">
+            <input id="newJobInput" type="text" placeholder="What u want to do?" class="form-control
+            text-dark" aria-label="Default" maxlength="50">
+            <button type="button" id="add-new-job" class="add-job btn btn-info ml-1 float-right">
+                <span aria-hidden="false">Add</span>
             </button>
+            <div class='invalid-feedback'>Please submit some.</div>
         </div>
     </div>
 </div>

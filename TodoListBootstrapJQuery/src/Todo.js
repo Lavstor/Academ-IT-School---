@@ -11,21 +11,20 @@ $(document).ready(function () {
     });
 
     function inputForm(textBefore) {
-        var input = $('<input type="text" placeholder="What u want to do?" class="form-control d-inline-block w-100 text-dark" ' +
+        var input = $('<input type="text" placeholder="What u want to do?" class="text-dark form-control" ' +
             'aria-label="Default" maxlength="50">').click(function () {
             $(this).addClass("text-dark");
-            $(this).select();
         });
 
         input.val(textBefore);
 
-        var cancel = $('<button type="button" class="cancel btn btn-outline-danger mb-1 mt-2">' +
+        var cancel = $('<button type="button" class="cancel btn btn-outline-danger btn-outline-secondary">' +
             '<span aria-hidden="true">Cancel</span>' +
             '</button>').click(function () {
             newTodoLi.replaceWith(createNewLi(textBefore));
         });
 
-        var confirm = $('<button type="button" class="confirm btn btn-outline-success ml-3 mb-1 mt-2">' +
+        var confirm = $('<button type="button" class="confirm btn btn-outline-success btn-outline-secondary">' +
             '<span aria-hidden="true">Confirm</span>' +
             '</button>').click(function () {
             if (isEmpty(input)) {
@@ -35,24 +34,31 @@ $(document).ready(function () {
             newTodoLi.replaceWith(createNewLi($(input).val()));
         });
 
+        var invalid = $(" <div class='invalid-feedback'>Please submit some.</div>");
+
+        var inputDiv = $("<div class='input-group mb-3'></div>");
+
+        var buttonsDiv = $("<div class='input-group-append'></div>");
+        buttonsDiv.append(cancel);
+        buttonsDiv.append(confirm);
+
+        inputDiv.append(input);
+        inputDiv.append(buttonsDiv);
+        inputDiv.append(invalid);
+
         var newTodoLi = $('<li class="list-group-item list-group-item-action input p-0"></li>');
-        newTodoLi.append(input);
-        newTodoLi.append(cancel);
-        newTodoLi.append(confirm);
+        newTodoLi.append(inputDiv);
 
         return newTodoLi;
     }
 
     function isEmpty(input) {
         if (input.val() === "") {
-            input.val("Error! Submit some work!");
-            input.removeClass("text-dark");
-            input.addClass("text-danger");
-
+            input.addClass("is-invalid");
             return true;
         }
 
-        input.addClass("text-dark");
+        input.removeClass("is-invalid");
         return false;
     }
 
@@ -60,7 +66,7 @@ $(document).ready(function () {
         var newLi = $('<li class="list-group-item list-group-item-action todo"></li>');
         var newA = $('<a class="redact"></a>').text(todoText);
         var deleteButton = $('<button type="button" class="close btn-circle">' +
-            '<span aria-hidden="true" class="h6">Удалить</span>' +
+            '<span aria-hidden="true" class="h6">Delete</span>' +
             '</button>').click(function () {
             $(this).parent().remove();
         });
