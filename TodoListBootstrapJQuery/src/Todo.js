@@ -34,14 +34,13 @@ $(document).ready(function () {
             newTodoLi.replaceWith(createNewLi($(input).val()));
         });
 
-        var invalid = $(" <div class='invalid-feedback'>Please submit some.</div>");
-
-        var inputDiv = $("<div class='input-group mb-3'></div>");
+        var invalid = $(" <div class='invalid-feedback'>Please sumbit some.</div>");
 
         var buttonsDiv = $("<div class='input-group-append'></div>");
         buttonsDiv.append(cancel);
         buttonsDiv.append(confirm);
 
+        var inputDiv = $("<div class='input-group mb-3'></div>");
         inputDiv.append(input);
         inputDiv.append(buttonsDiv);
         inputDiv.append(invalid);
