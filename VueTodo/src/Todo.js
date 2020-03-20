@@ -1,31 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
+    Vue.component("todo-item", {
+        template: '<li> {{ title }}<button @click= "console">Удалить</button> </li>',
+        props: ["title"]
+    });
+
     new Vue({
-        el: '#inpDiv',
+        el: "#todo-list",
         data: {
-            newTodoText: '',
-            todos: [
-                {
-                    id: 1,
-                    title: 'Помыть посуду'
-                },
-                {
-                    id: 2,
-                    title: 'Вынести мусор'
-                },
-                {
-                    id: 3,
-                    title: 'Подстричь газон'
-                }
-            ],
-            nextTodoId: 4
+            newTodoText: "",
+            todo: [],
+            nextTodoId: 1
         },
         methods: {
             addNewTodo: function () {
-                this.todos.push({
+                if (this.newTodoText === "") {
+                    return;
+                }
+
+                this.todo.push({
                     id: this.nextTodoId++,
                     title: this.newTodoText
-                })
-                this.newTodoText = ''
+                });
+
+                this.newTodoText = "";
+            },
+            console: function () {
+                console.log(123);
             }
         }
     })
