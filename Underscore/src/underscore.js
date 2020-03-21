@@ -52,13 +52,21 @@
         }
     ];
 
-    console.log(_.meanBy(peopleList, "age"));
+    var ageAverage = _.meanBy(peopleList, "age");
+    console.log(ageAverage);
 
-    console.log(_.sortBy(peopleList, "age").filter(function (o) {
-        return o.age >= 20 && o.age <= 30;
-    }));
+    var sortedPeople = _.chain(peopleList)
+        .filter(function (o) {
+            return o.age >= 20 && o.age <= 30;
+        })
+        .sortBy("age")
+        .value();
 
-    console.log(_.forEach(peopleList, function (currentObj) {
+    console.log(sortedPeople);
+
+    _.each(peopleList, function (currentObj) {
         currentObj.fullName = currentObj.name + " " + currentObj.lastName;
-    }));
+    });
+
+    console.log(peopleList);
 })();
