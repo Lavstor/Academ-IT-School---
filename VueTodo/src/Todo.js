@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    Vue.component("todo-item", {
-        template: '<li> {{ title }}<button @click= "console">Удалить</button> </li>',
-        props: ["title"]
+    Vue.component('todo-item', {
+        template: '<li> {{ title }} <button @click="$emit(\'remove\')">Удалить</button></li>',
+        props: ['title']
     });
 
     new Vue({
@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 this.newTodoText = "";
             },
-            console: function () {
-                console.log(123);
+            deleteJob: function (index) {
+                this.todo.splice(index, 1);
             }
         }
     })

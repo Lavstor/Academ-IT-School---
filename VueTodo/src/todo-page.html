@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="todo-list">
-    <form @submit.prevent="addNewTodo">
-        <label for="new-todo">Добавить задачу</label>
-        <input v-model="newTodoText" id="new-todo" placeholder="">
-        <button>Добавить</button>
+<div id="todo-list" class="container">
+    <form @submit.prevent="addNewTodo" class="container-fluid p-0 class='input-group-append" >
+            <label for="new-todo">Добавить задачу</label>
+            <input v-model="newTodoText" id="new-todo" placeholder="" class="form-control text-dark"
+                   aria-label="Default" maxlength="50">
+            <button class="cancel btn btn-outline-danger btn-outline-secondary">Добавить</button>
     </form>
-    <ul>
-        <li is="todo-item" v-for="(job, index) in todo" :key="job.id" :title="job.title"></li>
+    <ul class="todo-list list-group list-group-flush">
+        <li is="todo-item" v-for="(job, index) in todo" :key="job.id" :title="job.title"
+            @remove="deleteJob(index)"></li>
     </ul>
 </div>
 <script src="node_modules/jquery/dist/jquery.js"></script>
