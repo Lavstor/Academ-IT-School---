@@ -8,17 +8,25 @@
 </head>
 <body>
 <div id="todo-list" class="container">
-    <form @submit.prevent="addNewTodo" class="container-fluid p-0 class='input-group-append">
-        <div class="container-fluid list-group-flush mt-2 p-0 input-group">
-            <input v-model="newTodoText" id="new-todo" placeholder="New job?" class="form-control text-dark"
-                   aria-label="Default" maxlength="50">
-            <button class="add-job btn btn-info ml-1 float-right">Добавить</button>
-        </div>
-    </form>
-    <ul class="todo-list list-group list-group-flush">
-        <li is="todo-item" v-for="(job, index) in todo" :key="job.id" :title="job.title"
-            @remove="deleteJob(index)" class="list-group-item list-group-item-action input p-0"></li>
-    </ul>
+    <h1 class="mt-4">Todo List</h1>
+    <div class="container-fluid p-0">
+        <form @submit.prevent="addNewTodo" class="container-fluid p-0 class='input-group-append">
+            <div class="container-fluid list-group-flush mt-2 p-0 input-group">
+                <input v-model="newTodoText" id="new-todo" placeholder="New job?" class="form-control text-dark"
+                       :class="{'is-invalid' : isInvalid}"
+                       aria-label="Default" maxlength="50">
+                <button class="add-job btn btn-info ml-1 float-right"><span aria-hidden="false">Add</span></button>
+                <div class='invalid-feedback'>Please submit some.</div>
+            </div>
+        </form>
+        <ul class="todo-list list-group list-group-flush">
+            <template v-for="(job, index) in todo">
+                <li v-if="job.isActive" is="todo-item" :key="job.id" :title="job.title"
+                    @remove="deleteJob(index)" @redact="redactJob(index)"></li>
+                <li v-else is="redact-item" :job="job"></li>
+            </template>
+        </ul>
+    </div>
 </div>
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
