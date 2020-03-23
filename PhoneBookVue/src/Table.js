@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     Vue.component('contact-item', {
         template: "<tr class='user-info'>" +
-            "<td><label><input type='checkbox' class='check-box'></label></td>" +
-            "<td class='current-number can-filter'></td>" +
-            "<td class='last-name can-filter'>{{ lastName }}</td>" +
-            "<td class='first-name can-filter'>{{ firstName }}</td>" +
-            "<td class='telephone can-filter'>{{ phone }}</td>" +
-            "<td><button type='button' class='delete-button btn btn-danger'>X</button></td></tr>",
-        props: ['phone', 'first-name', 'last-name']
+            "<td><label><input type='checkbox' class='check-box' :checked='contact.checked'></label></td>" +
+            "<td class='current-number can-filter'>{{ index + 1 }}</td>" +
+            "<td class='last-name can-filter'>{{ contact.lastName }}</td>" +
+            "<td class='first-name can-filter'>{{ contact.firstName }}</td>" +
+            "<td class='telephone can-filter'>{{ contact.phone }}</td>" +
+            "<td><button type='button' class='delete-button btn btn-danger' @click='$emit(\"delete-contact\")'>X</button></td></tr>",
+        props: ['contact', 'index']
     });
 
     new Vue({
@@ -18,29 +18,76 @@ document.addEventListener("DOMContentLoaded", function () {
             newLastName: "",
             contacts: [],
             nextContactId: 1,
-            isEmptyInput: false,
-            isInvalidPhone: false
+            isEmptyFirstName: false,
+            isEmptyLastName: false,
+            isEmptyPhone: false,
+            isInvalidPhone: false,
+            massDelete: false
         },
         methods: {
             newContact: function () {
-                if (this.newFirstName === "" || this.newLastName === "" || this.newPhone === "") {
-                    this.isEmptyInput = true;
+                if (this.newFirstName === "") {
+                    this.isEmptyFirstName = true;
 
                     return;
                 }
 
-                this.isEmptyInput = false;
+                this.isEmptyFirstName = false;
+
+                if (this.newLastName === "") {
+                    this.isEmptyLastName = true;
+
+                    return;
+                }
+
+                this.isEmptyLastName = false;
+
+                if (this.newPhone === "") {
+                    this.isEmptyPhone = true;
+
+                    return;
+                }
+
+                this.isEmptyPhone = false;
+
+                var newPhone = this.newPhone;
+
+                _.findIndex(this.contacts, function (contact) {
+                    return contact.phone === newPhone;
+                }) !== -1 ?
+                    this.isInvalidPhone = true : this.isInvalidPhone = false;
+
+                if (this.isInvalidPhone) {
+                    return;
+                }
 
                 this.contacts.push({
                     id: this.nextContactId++,
                     firstName: this.newFirstName,
                     lastName: this.newLastName,
-                    phone: this.newPhone
+                    phone: this.newPhone,
+                    checked: false
                 });
+
+                this.massDelete = false;
+                this.massDeletePush();
 
                 this.newPhone = "";
                 this.newFirstName = "";
                 this.newLastName = "";
+            },
+            deleteContact: function (index) {
+                this.contacts.splice(index, 1);
+            },
+            massDeletePush: function () {
+                console.log("123");
+
+                var isMassDelete = this.massDelete;
+
+                _.each(this.contacts, function (contact) {
+                    contact.checked = isMassDelete;
+                })
+
             }
         }
     });

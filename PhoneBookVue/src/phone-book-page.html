@@ -14,7 +14,11 @@
             <tr>
                 <th>
                     <label>
-                        <input type="checkbox" id="mass-delete">
+                        <input v-model="massDelete"
+                               true-value= true
+                               false-value= false
+                               @click="massDeletePush"
+                               type="checkbox" id="mass-delete">
                     </label>
                 </th>
                 <th>№</th>
@@ -27,22 +31,23 @@
             </tr>
             </thead>
             <tbody id="telephone-holder-info">
-            <tr is="contact-item" v-for="(contact, index) in contacts" :key="contact.id" :first-name="contact.firstName"
-                :last-name="contact.lastName" :phone="contacts.phone"></tr>
+            <tr is="contact-item" v-for="(contact, index) in contacts" :key="contact.id" :contact="contact" :index="index"
+                @delete-contact="deleteContact(index)"></tr>
             </tbody>
         </table>
     </div>
     <div class="container-fluid mh-100 position-relative bg-dark text-white">
         <div class="input-box">
-            <label> Фамилия: <input v-model="newLastName" :class="{'is-invalid' : isEmptyInput}" type="text"
+            <label> Фамилия: <input v-model="newLastName" :class="{'is-invalid' : isEmptyLastName}" type="text"
                                     class="input form-control" id="last-name" placeholder="Фамилия"></label>
-            <label> Имя: <input :class="{'is-invalid' : isEmptyInput}" v-model="newFirstName"
+            <label> Имя: <input :class="{'is-invalid' : isEmptyFirstName}" v-model="newFirstName"
                 type="text" class="input form-control" id="first-name" placeholder="Имя"></label>
-            <label> Телефон: <input :class="{'is-invalid' : isEmptyInput}" v-model="newPhone"
+            <label> Телефон: <input :class="{'is-invalid' : isEmptyPhone, 'is-invalid' : isInvalidPhone}" v-model="newPhone"
                 type="tel" class="input form-control" id="telephone-number"
                                     placeholder="Номер телефона"></label>
             <button @click="newContact"  id="add-button" class="btn btn-light mb-1" type="button">Добавить</button>
             <div style="display: none" class="invalid-feedback" id="error-massage">Ошибка, надо больше букв!</div>
+            <div v-if="isInvalidPhone === true" class="invalid-feedback" id="invalidPhone">Такой номер уже есть!</div>
         </div>
         <div class="filter-box container-fluid p-0 mt-5">
             <label> Фильтр: <input type="text" class="input form-control" id="filter" placeholder="Фильтр"></label>
@@ -57,6 +62,7 @@
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="node_modules/jquery-confirm/js/jquery-confirm.js"></script>
 <script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/lodash/lodash.js"></script>
 <script src="Table.js"></script>
 </body>
 </html>
