@@ -17,7 +17,7 @@
                         <input v-model="massDelete"
                                true-value= true
                                false-value= false
-                               @click="massDeletePush"
+                               @click="massDeletePush(!massDelete)"
                                type="checkbox" id="mass-delete">
                     </label>
                 </th>
@@ -54,7 +54,6 @@
             <button id="confirm-filter-button" class="btn btn-light mb-1" type="button">Фильтровать</button>
             <button id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
         </div>
-
     </div>
 </div>
 
