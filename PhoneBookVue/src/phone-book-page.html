@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-<div class="main-container container">
+<div id="contacts-list" class="main-container container">
     <div class="table-container">
         <table class="main-table table-striped table-dark table">
             <thead class="thead-dark">
@@ -27,16 +27,21 @@
             </tr>
             </thead>
             <tbody id="telephone-holder-info">
+            <tr is="contact-item" v-for="(contact, index) in contacts" :key="contact.id" :first-name="contact.firstName"
+                :last-name="contact.lastName" :phone="contacts.phone"></tr>
             </tbody>
         </table>
     </div>
     <div class="container-fluid mh-100 position-relative bg-dark text-white">
         <div class="input-box">
-            <label> Фамилия: <input type="text" class="input form-control" id="last-name" placeholder="Фамилия"></label>
-            <label> Имя: <input type="text" class="input form-control" id="first-name" placeholder="Имя"></label>
-            <label> Телефон: <input type="tel" class="input form-control" id="telephone-number"
+            <label> Фамилия: <input v-model="newLastName" :class="{'is-invalid' : isEmptyInput}" type="text"
+                                    class="input form-control" id="last-name" placeholder="Фамилия"></label>
+            <label> Имя: <input :class="{'is-invalid' : isEmptyInput}" v-model="newFirstName"
+                type="text" class="input form-control" id="first-name" placeholder="Имя"></label>
+            <label> Телефон: <input :class="{'is-invalid' : isEmptyInput}" v-model="newPhone"
+                type="tel" class="input form-control" id="telephone-number"
                                     placeholder="Номер телефона"></label>
-            <button id="add-button" class="btn  btn-light mb-1" type="button">Добавить</button>
+            <button @click="newContact"  id="add-button" class="btn btn-light mb-1" type="button">Добавить</button>
             <div style="display: none" class="invalid-feedback" id="error-massage">Ошибка, надо больше букв!</div>
         </div>
         <div class="filter-box container-fluid p-0 mt-5">
@@ -44,11 +49,14 @@
             <button id="confirm-filter-button" class="btn btn-light mb-1" type="button">Фильтровать</button>
             <button id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
         </div>
+
     </div>
 </div>
+
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="node_modules/jquery-confirm/js/jquery-confirm.js"></script>
+<script src="node_modules/vue/dist/vue.js"></script>
 <script src="Table.js"></script>
 </body>
 </html>

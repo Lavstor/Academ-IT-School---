@@ -52,8 +52,8 @@ $(document).ready(function () {
 
         newTr.append(checkBoxLine);
         newTr.append(serialNumberLine);
-        newTr.append(firstNameLine);
         newTr.append(lastNameLine);
+        newTr.append(firstNameLine);
         newTr.append(telephoneNameLine);
         newTr.append(deleteButton);
 
