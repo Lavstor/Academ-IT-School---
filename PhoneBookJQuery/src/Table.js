@@ -39,7 +39,7 @@ $(document).ready(function () {
                 }
             });
 
-            isMassDelete ? massDeleteCheckBox.prop("checked", true) : massDeleteCheckBox.prop("checked", false);
+            massDeleteCheckBox.prop("checked", isMassDelete);
         });
 
         var serialNumberLine = $("<td class='current-number can-filter'></td>").text(serialNumber);
@@ -150,7 +150,6 @@ $(document).ready(function () {
         var isValid = true;
 
         nodes.forEach(function (node) {
-
             if ($(node).val() === "") {
                 $(node).addClass("is-invalid");
 

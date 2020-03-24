@@ -54,8 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 _.findIndex(this.contacts, function (contact) {
                     return contact.phone === newPhone;
-                }) !== -1 ?
-                    this.isInvalidPhone = true : this.isInvalidPhone = false;
+                }) !== -1 ? this.isInvalidPhone = true : this.isInvalidPhone = false;
 
                 if (this.isInvalidPhone) {
                     return;
@@ -87,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 _.each(this.contacts, function (contact) {
                     contact.checked = isMassDelete;
                 })
-
             }
         }
     });

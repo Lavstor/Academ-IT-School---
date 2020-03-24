@@ -22,7 +22,7 @@
                 <th>Имя</th>
                 <th>Номер телефона</th>
                 <th>
-                    <button id="delete-all" class="btn btn btn-danger" type="button">Удалить все</button>
+                    <button id="delete-all" class="btn btn btn-danger" type="button">Удалить выбранные</button>
                 </th>
             </tr>
             </thead>
@@ -31,17 +31,17 @@
         </table>
     </div>
     <div class="container-fluid mh-100 position-relative bg-dark text-white">
-        <div class="input-box">
+        <div class="input-box has-success">
             <label> Фамилия: <input type="text" class="input form-control" id="last-name" placeholder="Фамилия"></label>
             <label> Имя: <input type="text" class="input form-control" id="first-name" placeholder="Имя"></label>
             <label> Телефон: <input type="tel" class="input form-control" id="telephone-number"
                                     placeholder="Номер телефона"></label>
-            <button id="add-button" class="btn  btn-light mb-1" type="button">Добавить</button>
+            <button id="add-button" class="btn btn-primary mb-1" type="button">Добавить</button>
             <div style="display: none" class="invalid-feedback" id="error-massage">Ошибка, надо больше букв!</div>
         </div>
         <div class="filter-box container-fluid p-0 mt-5">
             <label> Фильтр: <input type="text" class="input form-control" id="filter" placeholder="Фильтр"></label>
-            <button id="confirm-filter-button" class="btn btn-light mb-1" type="button">Фильтровать</button>
+            <button id="confirm-filter-button" class="btn btn-primary mb-1" type="button">Фильтровать</button>
             <button id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
         </div>
     </div>
