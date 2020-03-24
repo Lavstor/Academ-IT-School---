@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 this.massDelete = false;
-                this.massDeletePush();
+                this.massDeletePush(true);
 
                 this.newPhone = "";
                 this.newFirstName = "";
@@ -78,13 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
             deleteContact: function (index) {
                 this.contacts.splice(index, 1);
             },
-            massDeletePush: function () {
-                console.log("123");
-
-                var isMassDelete = this.massDelete;
-
+            massDeletePush: function (isChecked) {
+                console.log(isChecked);
                 _.each(this.contacts, function (contact) {
-                    contact.checked = isMassDelete;
+                    contact.checked = isChecked;
                 })
             }
         }

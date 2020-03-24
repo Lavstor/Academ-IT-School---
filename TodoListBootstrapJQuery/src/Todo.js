@@ -45,7 +45,7 @@ $(document).ready(function () {
         inputDiv.append(buttonsDiv);
         inputDiv.append(invalid);
 
-        var newTodoLi = $('<li class="list-group-item list-group-item-action input p-0"></li>');
+        var newTodoLi = $('<li class="list-group-item list-group-item-action input p-0 mt-3"></li>');
         newTodoLi.append(inputDiv);
 
         return newTodoLi;
