@@ -33,23 +33,23 @@
     </div>
     <div class="container-fluid bg-dark text-white">
         <div class="input-box has-success">
-            <label class="input-field"> Фамилия: <input type="text" class="input form-control"
-                                                        id="last-name" placeholder="Фамилия" value="Mark" required></label>
-            <div class="valid-tooltip">
-                Looks good!
-            </div>
+            <label class="input-field"> Фамилия: <input type="text" class="input form-control input-validation is-valid"
+                                                        id="last-name" placeholder="Фамилия"></label>
             <label class="input-field"> Имя: <input type="text" class="input form-control input-validation is-valid"
                                                     id="first-name" placeholder="Имя"></label>
             <label class="input-field"> Телефон: <input type="tel" class="input form-control input-validation is-valid"
                                                         id="telephone-number"
                                                         placeholder="Номер телефона"></label>
             <button id="add-button" class="btn btn-primary mb-1 col-auto" type="button">Добавить</button>
-            <div style="display: none" class="invalid-feedback position-absolute" id="error-massage">Ошибка, надо больше букв!</div>
+            <div class="invalid-feedback mt-1" id="error-massage">Ошибка, надо больше букв!</div>
         </div>
         <div class="filter-box container-fluid p-0 mt-5">
-            <label> Фильтр: <input type="text" class="input form-control" id="filter" placeholder="Фильтр"></label>
-            <button id="confirm-filter-button" class="btn btn-primary mb-1" type="button">Фильтровать</button>
-            <button id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
+            <label class="input-field"> Фильтр: <input type="text" class="input form-control" id="filter"
+                                                       placeholder="Фильтр"></label>
+            <div class="d-inline-block confirm-cancel-container">
+                <button id="confirm-filter-button" class="btn btn-primary mb-1" type="button">Фильтровать</button>
+                <button id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
+            </div>
         </div>
     </div>
 </div>

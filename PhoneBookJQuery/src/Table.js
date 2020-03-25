@@ -36,9 +36,10 @@ $(document).ready(function () {
         var firstNameLine = $("<td class='first-name can-filter'></td>").text(firstName.val());
         var lastNameLine = $("<td class='last-name can-filter'></td>").text(lastName.val());
         var telephoneNameLine = $("<td class='telephone can-filter'></td>").text(phone.val());
-        var deleteButton = $("<td class='text-center'><button type='button' class='delete-button btn btn-danger'>X</button></td>").click(function () {
-            confirmDelete($(this).closest("tr"));
-        });
+        var deleteButton = $("<td class='text-center'><button type='button' class='delete-button btn btn-danger'>X</button></td>")
+            .click(function () {
+                confirmDelete($(this).closest("tr"));
+            });
 
         newTr.append(checkBoxLine);
         newTr.append(serialNumberLine);
