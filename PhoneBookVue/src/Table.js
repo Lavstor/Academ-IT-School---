@@ -26,6 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         methods: {
             newContact: function () {
+                _.each([this.newPhone, this.newFirstName, this.newLastName], function (thisInput) {
+                    if (thisInput.newFirstName === "") {
+                        this.isEmptyFirstName = true;
+
+                        return;
+                    }
+                });
+
                 if (this.newFirstName === "") {
                     this.isEmptyFirstName = true;
 
@@ -82,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(isChecked);
                 _.each(this.contacts, function (contact) {
                     contact.checked = isChecked;
-                })
+                });
             }
         }
     });
