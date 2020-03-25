@@ -21,9 +21,13 @@
         </form>
         <ul class="todo-list list-group list-group-flush">
             <template v-for="(job, index) in todo">
-                <li v-if="job.isActive" is="todo-item" :key="job.id" :title="job.title"
-                    @remove="deleteJob(index)" @redact="redactJob(index)"></li>
-                <li v-else is="redact-item" :job="job"></li>
+                <li v-if="job.isActive" is="todo-item"
+                    :key="job.id"
+                    :title="job.title"
+                    @remove="deleteJob(index)"
+                    @redact="redactJob(index)"></li>
+                <li v-else is="redact-item"
+                    :job="job"></li>
             </template>
         </ul>
     </div>
