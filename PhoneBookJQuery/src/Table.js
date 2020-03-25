@@ -1,15 +1,14 @@
 $(document).ready(function () {
-    var inputNodes = [$("#last-name"), $("#first-name"), $("#telephone-number")];
-    var lastName = inputNodes[0];
-    var firstName = inputNodes[1];
-    var phone = inputNodes[2];
+    var lastName = $("#last-name");
+    var firstName = $("#first-name");
+    var phone = $("#telephone-number");
     var filter = $("#filter");
     var serialNumber = 1;
     var errorMessage = $("#error-massage");
     var massDeleteCheckBox = $("#mass-delete");
 
     $("#add-button").click(function () {
-        if (!isValid(inputNodes)) {
+        if (!isValid($(".input-validation"))) {
             errorMessage.show();
             errorMessage.text("Заполните поля!");
 
@@ -28,19 +27,10 @@ $(document).ready(function () {
         massDeleteCheckBox.prop("checked", false);
 
         var newTr = $("<tr class='user-info'></tr>");
-        var checkBoxLine = $("<td><label><input type='checkbox' class='check-box'></label></td>").click(function () {
-            var isMassDelete = true;
-
-            $(".check-box:checkbox").each(function (index, checkBox) {
-                if (!$(checkBox).prop("checked")) {
-                    isMassDelete = false;
-
-                    return false;
-                }
+        var checkBoxLine = $("<td><label><input type='checkbox' class='check-box'></label></td>")
+            .click(function () {
+                checkMassDelete(massDeleteCheckBox.prop("checked"));
             });
-
-            massDeleteCheckBox.prop("checked", isMassDelete);
-        });
 
         var serialNumberLine = $("<td class='current-number can-filter'></td>").text(serialNumber);
         var firstNameLine = $("<td class='first-name can-filter'></td>").text(firstName.val());
@@ -70,6 +60,20 @@ $(document).ready(function () {
         confirmDelete($("input:checkbox:checked:enabled"));
     });
 
+    function checkMassDelete() {
+        var isMassDelete = true;
+
+        $(".check-box:checkbox").each(function (index, checkBox) {
+            if (!$(checkBox).prop("checked")) {
+                isMassDelete = false;
+
+                return false;
+            }
+        });
+
+        massDeleteCheckBox.prop("checked", isMassDelete);
+    }
+
     function confirmDelete(deleteArray) {
         // noinspection JSUnusedGlobalSymbols,NonAsciiCharacters
 
@@ -84,7 +88,7 @@ $(document).ready(function () {
                         var trDelete = $(nodeToDelete).closest(".user-info");
 
                         $(trDelete).remove();
-                        massDeleteCheckBox.prop("checked", false);
+                        checkMassDelete(massDeleteCheckBox.prop("checked"));
                     });
 
                     serialNumberReforming();
@@ -103,20 +107,18 @@ $(document).ready(function () {
     massDeleteCheckBox.click(function () {
         var checkboxArray = $("input:checkbox");
 
-        massDeleteCheckBox.prop("checked") ? checkboxArray.each(function (index, tr) {
-            $(tr).prop("checked", true);
-        }) : checkboxArray.each(function (index, tr) {
-            $(tr).prop("checked", false);
+        checkboxArray.each(function (index, tr) {
+            $(tr).prop("checked", massDeleteCheckBox.prop("checked"));
         });
     });
 
     $("#cancel-filter-button").click(function () {
-        showAllTr();
+        $("tr").show();
         filter.val("");
     });
 
     $("#confirm-filter-button").click(function () {
-        showAllTr();
+        $("tr").show();
 
         $(".user-info").each(function (index, row) {
             var hideIt = true;
@@ -132,12 +134,6 @@ $(document).ready(function () {
         });
     });
 
-    function showAllTr() {
-        $(".user-info").each(function (index, tr) {
-            $(tr).show();
-        });
-    }
-
     function serialNumberReforming() {
         var changeableNumber = $(".main-table .current-number");
 
@@ -149,7 +145,7 @@ $(document).ready(function () {
     function isValid(nodes) {
         var isValid = true;
 
-        nodes.forEach(function (node) {
+        nodes.each(function (index, node) {
             if ($(node).val() === "") {
                 $(node).addClass("is-invalid");
 
@@ -166,7 +162,7 @@ $(document).ready(function () {
         var text = telephoneNode.val();
 
         var nodes = $(".main-table .telephone").filter(function (index, node) {
-            return $(node).text() === text;
+            return $(node).text().toLowerCase() === text.toLowerCase();
         });
 
         return nodes.length <= 0;
