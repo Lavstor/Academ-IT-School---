@@ -5,6 +5,7 @@
     <title>PhoneBook</title>
     <link rel="stylesheet" href="node_modules/jquery-confirm/css/jquery-confirm.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="contacts-list" class="main-container container">
@@ -36,22 +37,22 @@
             </tbody>
         </table>
     </div>
-    <div class="container-fluid mh-100 position-relative bg-dark text-white">
+    <div class="container-fluid bg-dark text-white">
         <div class="input-box">
-            <label> Фамилия: <input v-model="newLastName" :class="{'is-invalid' : isEmptyLastName}" type="text"
+            <label class="input-field"> Фамилия: <input v-model="newLastName" :class="{'is-invalid' : isEmptyLastName}" type="text"
                                     class="input form-control" id="last-name" placeholder="Фамилия"></label>
-            <label> Имя: <input :class="{'is-invalid' : isEmptyFirstName}" v-model="newFirstName"
+            <label class="input-field"> Имя: <input :class="{'is-invalid' : isEmptyFirstName}" v-model="newFirstName"
                 type="text" class="input form-control" id="first-name" placeholder="Имя"></label>
-            <label> Телефон: <input :class="{'is-invalid' : isEmptyPhone, 'is-invalid' : isInvalidPhone}" v-model="newPhone"
+            <label class="input-field"> Телефон: <input :class="{'is-invalid' : isEmptyPhone, 'is-invalid' : isInvalidPhone}" v-model="newPhone"
                 type="tel" class="input form-control" id="telephone-number"
                                     placeholder="Номер телефона"></label>
             <button @click="newContact"  id="add-button" class="btn btn-light mb-1" type="button">Добавить</button>
-            <div style="display: none" class="invalid-feedback" id="error-massage">Ошибка, надо больше букв!</div>
-            <div v-if="isInvalidPhone === true" class="invalid-feedback" id="invalidPhone">Такой номер уже есть!</div>
+            <div style="display: none" class="invalid-feedback position-absolute" id="error-massage">Ошибка, надо больше букв!</div>
+            <div v-if="isInvalidPhone === true" class="invalid-feedback position-absolute" id="invalidPhone">Такой номер уже есть!</div>
         </div>
         <div class="filter-box container-fluid p-0 mt-5">
             <label> Фильтр: <input type="text" class="input form-control" id="filter" placeholder="Фильтр"></label>
-            <button id="confirm-filter-button" class="btn btn-light mb-1" type="button">Фильтровать</button>
+            <button id="confirm-filter-button" class="btn btn-primary mb-1" type="button">Фильтровать</button>
             <button id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
         </div>
     </div>

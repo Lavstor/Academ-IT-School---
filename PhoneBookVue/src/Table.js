@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "<td class='last-name can-filter'>{{ contact.lastName }}</td>" +
             "<td class='first-name can-filter'>{{ contact.firstName }}</td>" +
             "<td class='telephone can-filter'>{{ contact.phone }}</td>" +
-            "<td><button type='button' class='delete-button btn btn-danger' @click='$emit(\"delete-contact\")'>X</button></td></tr>",
+            "<td class=\"text-center\"><button type='button' class='delete-button btn btn-danger' @click='$emit(\"delete-contact\")'>X</button></td></tr>",
         props: ['contact', 'index']
     });
 
