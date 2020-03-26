@@ -15,10 +15,8 @@
             <tr>
                 <th>
                     <label>
-                        <input v-model="massDelete"
-                               true-value=true
-                               false-value=false
-                               @click="massDeletePush(!massDelete)"
+                        <input v-model.lazy="massDelete"
+                               @click="massDeletePush(massDelete)"
                                type="checkbox" id="mass-delete">
                     </label>
                 </th>
@@ -27,7 +25,9 @@
                 <th>Имя</th>
                 <th>Номер телефона</th>
                 <th>
-                    <button id="delete-all" class="btn btn btn-danger" type="button">Удалить выбранные</button>
+                    <button @click="deleteAllSelected()" id="delete-all" class="btn btn btn-danger" type="button">
+                        Удалить выбранные
+                    </button>
                 </th>
             </tr>
             </thead>
@@ -36,32 +36,38 @@
                 :key="contact.id"
                 :contact="contact"
                 :index="index"
-                @delete-contact="deleteContact(index)"></tr>
+                @delete-contact="deleteContact(index)"
+                @check-mass-delete="checkMassDelete()"></tr>
             </tbody>
         </table>
     </div>
     <div class="container-fluid bg-dark text-white">
         <div class="input-box">
-            <label class="input-field"> Фамилия: <input v-model="newLastName" :class="{'is-invalid' : isEmptyLastName}"
-                                                        type="text"
-                                                        class="input form-control" id="last-name" placeholder="Фамилия"></label>
-            <label class="input-field"> Имя: <input :class="{'is-invalid' : isEmptyFirstName}" v-model="newFirstName"
-                                                    type="text" class="input form-control" id="first-name"
-                                                    placeholder="Имя"></label>
+            <label class="input-field"> Фамилия: <input
+                    v-model="newLastName"
+                    :class="{'is-invalid' : isEmptyLastName}"
+                    type="text"
+                    class="input form-control input-validation is-valid"
+                    id="last-name" placeholder="Фамилия"></label>
+            <label class="input-field"> Имя: <input
+                    :class="{'is-invalid' : isEmptyFirstName}" v-model="newFirstName"
+                    type="text" class="input form-control input-validation is-valid"
+                    id="first-name"
+                    placeholder="Имя"></label>
             <label class="input-field"> Телефон: <input
-                    :class="{'is-invalid' : isEmptyPhone, 'is-invalid' : isInvalidPhone}" v-model="newPhone"
-                    type="tel" class="input form-control" id="telephone-number"
+                    :class="{'is-invalid' : isEmptyPhone}" v-model="newPhone"
+                    type="tel" class="input form-control input-validation is-valid" id="telephone-number"
                     placeholder="Номер телефона"></label>
             <button @click="newContact" id="add-button" class="btn btn-light mb-1" type="button">Добавить</button>
-            <div class="invalid-feedback" id="error-massage">Ошибка, надо больше букв!</div>
-            <div v-if="isInvalidPhone === true" class="invalid-feedback position-absolute" id="invalidPhone">Такой номер
-                уже есть!
+            <div v-if="displayError" class="invalid-feedback mt-1 d-block" id="error-massage"
+                 :class="{'display-none' : isEmptyLastName}">{{ errorMessage }}
             </div>
+
         </div>
         <div class="filter-box container-fluid p-0 mt-5">
-            <label> Фильтр: <input type="text" class="input form-control" id="filter" placeholder="Фильтр"></label>
-            <button id="confirm-filter-button" class="btn btn-primary mb-1" type="button">Фильтровать</button>
-            <button id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
+            <label> Фильтр: <input v-model="filterInput" type="text" class="input form-control" id="filter" placeholder="Фильтр"></label>
+            <button @click="confirmFilter" id="confirm-filter-button" class="btn btn-primary mb-1" type="button">Фильтровать</button>
+            <button @click="cancelFilter" id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
         </div>
     </div>
 </div>
