@@ -33,6 +33,7 @@
             </thead>
             <tbody id="telephone-holder-info">
             <tr is="contact-item" v-for="(contact, index) in contacts"
+                v-if="!contact.isHidden"
                 :key="contact.id"
                 :contact="contact"
                 :index="index"
@@ -65,9 +66,14 @@
 
         </div>
         <div class="filter-box container-fluid p-0 mt-5">
-            <label> Фильтр: <input v-model="filterInput" type="text" class="input form-control" id="filter" placeholder="Фильтр"></label>
-            <button @click="confirmFilter" id="confirm-filter-button" class="btn btn-primary mb-1" type="button">Фильтровать</button>
-            <button @click="cancelFilter" id="cancel-filter-button" class="btn btn-danger mb-1" type="button">Отменить</button>
+            <label> Фильтр: <input v-model="filterInput" type="text" class="input form-control" id="filter"
+                                   placeholder="Фильтр"></label>
+            <button @click="confirmFilter()" id="confirm-filter-button" class="btn btn-primary mb-1" type="button">
+                Фильтровать
+            </button>
+            <button @click="cancelFilter()" id="cancel-filter-button" class="btn btn-danger mb-1" type="button">
+                Отменить
+            </button>
         </div>
     </div>
 </div>

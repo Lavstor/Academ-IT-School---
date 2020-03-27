@@ -78,7 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     firstName: this.newFirstName,
                     lastName: this.newLastName,
                     phone: this.newPhone,
-                    checked: false
+                    checked: false,
+                    isHidden: false
                 });
 
                 this.massDelete = false;
@@ -135,10 +136,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             },
             confirmFilter: function () {
-                console.log(this.filterInput);
+                var checkLine = this.filterInput.toLowerCase();
+
+                _.each(this.contacts, function (contact) {
+                    contact.isHidden = !(contact.firstName.toLowerCase().indexOf(checkLine) >= 0
+                        || contact.lastName.toLowerCase().indexOf(checkLine) >= 0
+                        || contact.phone.toLowerCase().indexOf(checkLine) >= 0);
+                });
             },
             cancelFilter: function () {
+                _.each(this.contacts, function (contact) {
+                    contact.isHidden = false;
+                });
 
+                this.filterInput = "";
             }
         }
     });
