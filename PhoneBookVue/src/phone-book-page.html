@@ -60,7 +60,7 @@
                     :class="{'is-invalid' : isEmptyPhone}" v-model="newPhone"
                     type="tel" class="input form-control input-validation is-valid" id="telephone-number"
                     placeholder="Номер телефона"></label>
-            <button @click="newContact" id="add-button" class="btn btn-light mb-1" type="button">Добавить</button>
+            <button @click="newContact" id="add-button" class="btn btn-primary mb-1" type="button">Добавить</button>
             <div v-if="displayError" class="invalid-feedback mt-1 d-block" id="error-massage"
                  :class="{'display-none' : isEmptyLastName}">{{ errorMessage }}
             </div>
