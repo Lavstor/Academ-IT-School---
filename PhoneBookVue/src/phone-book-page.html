@@ -25,7 +25,8 @@
                 <th>Имя</th>
                 <th>Номер телефона</th>
                 <th>
-                    <button @click="deleteAllSelected()" id="delete-all" class="btn btn btn-danger" type="button">
+                    <button @click="deleteAllSelected()" id="delete-all" class="btn btn btn-danger delete-all-button"
+                            type="button">
                         Удалить выбранные
                     </button>
                 </th>
@@ -63,7 +64,6 @@
             <div v-if="displayError" class="invalid-feedback mt-1 d-block" id="error-massage"
                  :class="{'display-none' : isEmptyLastName}">{{ errorMessage }}
             </div>
-
         </div>
         <div class="filter-box container-fluid p-0 mt-5">
             <label> Фильтр: <input v-model="filterInput" type="text" class="input form-control" id="filter"

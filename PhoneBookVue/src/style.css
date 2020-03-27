@@ -2,4 +2,8 @@
     .input-field {
         width: 100%;
     }
+
+    .delete-all-button {
+        font-size: 14px;
+    }
 }
