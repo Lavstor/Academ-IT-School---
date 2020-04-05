@@ -20,18 +20,37 @@
             </div>
         </form>
         <ul class="todo-list list-group list-group-flush">
-            <template v-for="(job, index) in todo">
-                <li v-if="job.isActive" is="todo-item"
-                    :key="job.id"
-                    :title="job.title"
-                    @remove="deleteJob(index)"
-                    @redact="redactJob(index)"></li>
-                <li v-else is="redact-item"
-                    :job="job"></li>
-            </template>
+            <todo-item v-for="(todo, index) in todoItems" :key="todo.id" :todo="todo" @delete-todo="deleteTodo(todo)"/>
         </ul>
     </div>
 </div>
+<script type="text/x-template" id="todo-item-template">
+    <div>
+        <li v-if="todo.isEditing" class="list-group-item list-group-item-action p-0 pt-1 mt-3"
+            @click="redactTodo()">
+            {{todo.title}}
+            <button @click="deleteTodo()" class="btn btn-info ml-1 float-right">Delete</button>
+        </li>
+        <li v-else class="list-group-item list-group-item-action input p-0 pt-1">
+            <div class="input-group">
+                <input :class="{'is-invalid' : isInvalid}" v-model="newTitle" type="text"
+                       placeholder="What u want to do?" class="text-dark form-control"
+                       aria-label="Default" maxlength="50">
+                <div class="input-group-append">
+                    <button type="button" class="cancel btn btn-outline-danger btn-outline-secondary"
+                            @click="cancel()">
+                        <span aria-hidden="true">Cancel</span>
+                    </button>
+                    <button type="button" class="confirm btn btn-outline-success btn-outline-secondary"
+                            @click="confirm(newTitle)">
+                        <span aria-hidden="true">Confirm</span>
+                    </button>
+                </div>
+                <div class="invalid-feedback">Please submit some.</div>
+            </div>
+        </li>
+    </div>
+</script>
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="node_modules/vue/dist/vue.js"></script>
