@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="contacts-list" class="main-container container">
+<div v-cloak id="contacts-list" class="main-container container">
     <div class="table-container">
         <table class="main-table table-striped table-dark table">
             <thead class="thead-dark">
@@ -39,7 +39,8 @@
                 :contact="contact"
                 :index="index"
                 @delete-contact="deleteContact(index)"
-                @check-mass-delete="checkMassDelete()"></tr>
+                @check-mass-delete="checkMassDelete()">
+            </tr>
             </tbody>
         </table>
     </div>
@@ -62,7 +63,7 @@
                     placeholder="Номер телефона"></label>
             <button @click="newContact" id="add-button" class="btn btn-primary mb-1" type="button">Добавить</button>
             <div v-if="displayError" class="invalid-feedback mt-1 d-block" id="error-massage"
-                 :class="{'display-none' : isEmptyLastName}">{{ errorMessage }}
+                 :class="{'display-none' : isEmptyLastName}"> {{ errorMessage }}
             </div>
         </div>
         <div class="filter-box container-fluid p-0 mt-5">
@@ -77,6 +78,26 @@
         </div>
     </div>
 </div>
+<script type="text/x-template" id="contact-item-template">
+    <tr class="user-info">
+        <td>
+            <label>
+                <input type="checkbox" class="check-box"
+                       :checked='contact.checked'
+                       @click="checkBoxPush(contact), $emit('check-mass-delete')">
+            </label>
+        </td>
+        <td class="current-number can-filter">{{ index + 1 }}</td>
+        <td class="last-name can-filter">{{ contact.lastName }}</td>
+        <td class="first-name can-filter">{{ contact.firstName }}</td>
+        <td class="telephone can-filter">{{ contact.phone }}</td>
+        <td class="text-center">
+            <button type="button" class="delete-button btn btn-danger"
+                    @click="$emit('delete-contact')">X
+            </button>
+        </td>
+    </tr>
+</script>
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="node_modules/jquery-confirm/js/jquery-confirm.js"></script>

@@ -11,3 +11,7 @@
 .form-control.is-invalid {
     padding-right: 12px;
 }
+
+[v-cloak] {
+    display: none;
+}

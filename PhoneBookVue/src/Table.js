@@ -1,20 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
-    Vue.component('contact-item', {
-        template: "<tr class='user-info'>" +
-            "<td><label><input type='checkbox' class='check-box' " +
-            ":checked='contact.checked' " +
-            "@click='checkBoxPush(contact), $emit(\"check-mass-delete\")'></label></td>" +
-            "<td class='current-number can-filter'>{{ index + 1 }}</td>" +
-            "<td class='last-name can-filter'>{{ contact.lastName }}</td>" +
-            "<td class='first-name can-filter'>{{ contact.firstName }}</td>" +
-            "<td class='telephone can-filter'>{{ contact.phone }}</td>" +
-            "<td class=\"text-center\"><button type='button' class='delete-button btn btn-danger' @click='$emit(\"delete-contact\")'>X</button></td></tr>",
-        props: ['contact', 'index'],
+    Vue.component("contact-item", {
+        props: {
+            contact: {
+                type: Object,
+                required: true
+            },
+            index: {
+                type: Number,
+                required: true
+            }
+        },
         methods: {
             checkBoxPush: function (contact) {
                 contact.checked ? contact.checked = false : contact.checked = true;
             }
-        }
+        },
+        template: "#contact-item-template"
     });
 
     var vm = new Vue({
