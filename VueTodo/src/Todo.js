@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    Vue.component('todo-item', {
+    Vue.component("todo-item", {
         props: {
             todo: {
                 type: Object,
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         methods: {
             redactTodo: function () {
-                this.$emit('redact-todo', this.todo);
+                this.$emit("redact-todo", this.todo);
                 this.todo.isEditing = false;
             },
             deleteTodo: function () {
