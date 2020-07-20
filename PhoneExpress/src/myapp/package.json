@@ -13,7 +13,7 @@
     "http-errors": "~1.6.3",
     "jquery": "^3.4.1",
     "jquery-confirm": "^3.3.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "morgan": "~1.9.1",
     "twig": "~0.10.3",
     "vue": "^2.6.11"
